@@ -1,0 +1,447 @@
+html {
+  overflow-x: hidden;
+}
+
+/* Header */
+
+/* VIDEO */
+.parallax-section-4 {
+  width:100%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+video.fillWidth {
+  width: 100%;
+  height: 100%;
+
+}
+#video-container { 
+  top:0%; 
+  left:0%; 
+  height:auto; 
+  width:100%; 
+  overflow: hidden; 
+  background-size:cover;
+}
+
+/* FIN VIDEO */
+
+/* Bannière présentation */
+/* .banner {
+  width: 100%;
+  height: 80vh;
+  background: url(../images/epices.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #006474;
+  font-family: 'Cocogoose', sans-serif;
+  font-weight: bold;
+} */
+
+/* Bannière Ton Plezi */
+.banner_menu {
+  width: auto;
+  height: 50vh;
+  background: url(../images/poke-bowl-aux-oeufs-crevettes-emporter.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #006474;
+  /* text-shadow: 2px 2px 2px #FFFAF1; */
+  font-family: 'Cocogoose', sans-serif;
+  font-weight: bold;
+}
+
+.parallax-wrapper {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.parallax-section {
+  text-transform: uppercase;
+  /* width: 100vw; */
+  height: auto;
+  color: #006474;
+  font-family: 'Cocogoose', sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.parallax-section h2 {
+  padding: 4.5rem;
+  text-align: center;
+  font-size: 3rem;
+  color: #006474;
+  /* text-shadow: 1px 1px 0px #000; */
+}
+
+
+/* texte notre promesse  */
+
+.parallax-content {  
+  font-family: 'Cocogoose', sans-serif;
+  color: #006474;
+  margin: 0 2rem 3rem 2rem;
+  font-size: 2.5rem;
+  text-transform: none;
+}
+
+.parallax-section.promesse {
+
+
+  font-family: 'Cocogoose', sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+  padding: 100px ;
+  background: url(../logo/LOGO_PLEZI_jaune_transp.png) no-repeat center ;
+  background-size: contain;
+}
+
+.parallax-section-2 {
+  height: 40vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: url(../images/belle-plage-tropicale-exterieure-mer-ile-paradisiaque.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+}
+
+.parallax-section-2 .text {
+  width: 100%;
+  color: #006474;
+  /* text-shadow: #000 2px 0px 1px; */
+}
+.parallax-section-3 {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../images/cuisiner.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 3rem;
+}
+
+
+.bounce {
+  font-size: 5rem;
+  text-transform: uppercase;
+  width: 100%;
+  margin: 3rem auto;
+  display: inline-flex;
+  justify-content: center;
+  -webkit-box-reflect: below -20px linear-gradient(transparent, #211e1e2e);
+}
+.bounce span {
+  display: inline-flex;
+  color: #fcb045;
+  font-family: "Play", sans-serif;
+  animation: bounce 1s infinite;
+}
+@keyframes bounce {
+  0%,
+  50%,
+  100% {
+      transform: translateY(0);
+  }
+  25% {
+      transform: translateY(-20px);
+  }
+}
+.ten span:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
+.ten span:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+.ten span:nth-of-type(3) {
+  animation-delay: 0.3s;
+}
+.ten span:nth-of-type(4) {
+  animation-delay: 0.4s;
+}
+.ten span:nth-of-type(5) {
+  animation-delay: 0.5s;
+}
+.ten span:nth-of-type(6) {
+  animation-delay: 0.6s;
+}
+.ten span:nth-of-type(7) {
+  animation-delay: 0.7s;
+}
+.ten span:nth-of-type(8) {
+  animation-delay: 0.8s;
+}
+.ten span:nth-of-type(9) {
+  animation-delay: 0.9s;
+}
+.ten span:nth-of-type(10) {
+  animation-delay: 1s;
+}
+.ten span:nth-of-type(11) {
+  animation-delay: 1.1s;
+}
+.ten span:nth-of-type(12) {
+  animation-delay:1.2s;
+}
+.ten span:nth-of-type(13) {
+  animation-delay: 1.3s;
+}
+.ten span:nth-of-type(14) {
+  animation-delay:1.4s;
+}
+.ten span:nth-of-type(15) {
+  animation-delay: 1.5s;
+}
+.ten span:nth-of-type(16) {
+  animation-delay:1.6s;
+}
+.ten span:nth-of-type(17) {
+  animation-delay: 1.7s;
+}
+.ten span:nth-of-type(18) {
+  animation-delay: 1.8s;
+}
+.ten span:nth-of-type(19) {
+  animation-delay: 1.9s;
+}
+
+/* CONTACT FORM  ET AUTRES FORMULAIRES */
+
+.section-3 {
+  height: 100vh;
+  background: url(../images/plats1.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position-y: bottom;
+  background-size: cover;
+  padding: 100px 0;
+}
+
+.contact_form {
+  width: 50%;
+  background: #FFFAF1eb;
+  padding: 5vh 1vw;
+  margin: 100px auto;
+  border-radius: 5px;
+  border: #006474 3px solid;
+}
+
+.section-3 h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #006474;
+  /* text-shadow: #fff 1px 1px 0px; */
+  font-size: 2rem;
+  font-family: 'Cocogoose', sans-serif;
+  font-weight: bold;
+}
+
+.section-3 form {
+  max-width: 40vw;
+  margin: 0 auto;
+}
+
+.section-3 input[type="text"],
+.section-3 input[type="password"],
+.section-3 input[type="email"],
+.section-3 input[type="tel"],
+.section-3 textarea {
+  width: 100%;
+  padding: 10px 10px;
+  margin-bottom: 2vh;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.section-3 .submit_contact {
+  text-align: center;
+}
+
+.section-3 input[type="submit"] {
+  background-color: #006474;
+  color: #FFFAF1;
+  padding: 1vh 2vw;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.section-3 input[type="submit"]:hover {
+  color: #006474;
+  background-color: #fcb045;
+}
+
+.section-3 input[type="text"]::placeholder,
+.section-3 input[type="password"]::placeholder,
+.section-3 input[type="email"]::placeholder,
+.section-3 input[type="tel"]::placeholder,
+.section-3 textarea::placeholder {
+  font-family: "Varela Round", sans-serif;
+  color: #707070;
+  font-size: 1.1rem;
+}
+
+.word {
+
+  margin: auto;
+  font-size: 5rem;
+  padding: 40px;
+  color: #006474;
+  font-family: 'Cocoggose';
+  text-transform: uppercase;
+  border-radius: 50%;
+  background: #fcb045;
+  /* text-shadow: 5px 2px #222324, 2px 4px #222324, 3px 5px #222324; */
+}
+
+.forgot{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: nowrap;
+  text-align: center;
+
+}
+
+.forgot p {
+  padding: 24px 0;
+  margin: 20px auto 0;
+}
+
+
+.forgot a {
+  text-decoration: none;
+  color:#006474;
+}
+
+.forgot a:hover {
+  color: #fcb045;
+}
+
+/* FIN FORMULAIRES */
+
+/* ///// MEDIA ///// */
+@media only screen and (min-width:1201px) {
+  .parallax-section-2 {
+    height: 80vh;
+  }
+
+}
+
+@media only screen and (max-width: 1200px) {
+  .parallax-section h2 {
+    padding: 2rem;
+    text-align: center;
+    font-size: 4.5rem;
+  }
+  .bounce {
+    font-size: 3.5rem;
+  }
+
+  .parallax-section-2 img {
+    width: 50%;
+  }
+}
+
+
+@media only screen and (max-width: 858px) {
+  .section-3 form {
+    max-width: 50vw;
+    padding: 0 20px;
+  }
+  .contact_form {
+    width: 80%;
+  }
+  .column h1 {
+    font-size: 40px;
+  }
+  .column p {
+    font-size: 50px;
+  }
+  .parallax-section h2 {
+    padding: 1rem;
+    text-align: center;
+    font-size: 2rem;
+  }
+  .bounce {
+    font-size: 2.6rem;
+  }
+  .parallax-section-2 {
+    height: 70vh;
+  }
+  .parallax-section-2 img {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 684px) {
+  .parallax-section-2 {
+    height: 60vh;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .parallax-section p {
+    font-size: 21px;
+    line-height: 2rem;
+  }
+  .parallax-section.promesse {
+    padding: 24px;
+  }
+  .word {
+    font-size: 5rem;
+  }
+  .column h1 {
+    font-size: 40px;
+  }
+  .column p {
+    font-size: 40px;
+  }
+  #valeurs {
+    height: 15vh;
+  }
+  .bounce {
+    font-size: 1.5rem;
+  }
+  .parallax-section-2 {
+    height: 45vh;
+  }
+  .forgot {
+    display: block;
+    margin: 10px auto;
+  }
+  .forgot p {
+    margin: 10px auto;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .parallax-content {  
+    /* text-align: justify; */
+    margin: 0 auto;
+  }
+  .contact_form h2 {
+    font-size: 1.5rem;
+  }
+  
+}
+
+

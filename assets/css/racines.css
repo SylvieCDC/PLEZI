@@ -1,0 +1,423 @@
+/*Racines */
+
+
+.global-headline h2 {
+  text-align: center;
+  padding: 1.5rem;
+  margin-bottom: 20px;
+  color: #006474;
+  background-color: #fcb045;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.global-headline h6 {
+  font-size: 2rem;
+  margin: 2rem auto;
+  padding: 10px;
+  color: #fcb045;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.global-headline p {
+  text-align: center;
+  /* margin: 1rem 10%; */
+  font-size: 1.5rem;
+  
+}
+
+.discover-our-story .global-headline {
+  margin-top: 6.9rem;
+}
+
+.racines h6 {
+  margin: 20px auto;
+  padding: 10px;
+  color: #fcb045;
+  font-family: 'Varela Round', sans-serif;
+}
+
+p.racines {
+  margin: 30px 10%;
+  font-size: 1.3rem;
+  text-transform: none;
+  line-height: 2.5rem;
+}
+
+.restaurant-info {
+  text-align: center;
+}
+.restaurant-info-img img {
+  padding-bottom: 50px;
+  max-width: 500px;
+  max-height: 335px;
+  margin-top: 2rem;
+}
+.restaurant-description {
+  line-height: 1.6;
+  margin-bottom: 2.4rem;
+}
+
+.cta_menu a:hover {
+  background-color: #006474;
+  color: #FFFAF1;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.animate-left {
+  /* ... */
+  transform: translateX(-150%);
+  animation: animate-left-animation 1s ease-in-out forwards;
+}
+
+@keyframes animate-left-animation {
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-right {
+  /* ... */
+  transform: translateX(150%);
+  animation: animate-right-animation 1s ease-in-out forwards;
+}
+
+@keyframes animate-right-animation {
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.parallax-section-danse {
+  height: 60vh;
+  width: 500vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../images/pont_sur_mer.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  background-size: cover;
+  margin-bottom: 3rem;
+}
+
+.parallax-section-cuisine {
+  height: 60vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../images/cuilleres-bols-epices.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 3rem;
+}
+
+.parallax-section-art {
+  height: 60vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../images/maisons.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 3rem;
+}
+.parallax-section-coutumes {
+  height: 60vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../images/coutumes2.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 3rem;
+}
+.parallax-section-ile {
+  height: 60vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../images/facades_maison.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 3rem;
+}
+
+.parallax-section-inter {
+  height: 60vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../images/vue_ile.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 3rem;
+}
+
+/* Notre concept */
+ .concept {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+ }
+
+ .conceptbloc {
+  width: 30%;
+  font-size: 1.3rem;
+  margin: 20px ;
+  padding: 10px;
+  text-align: justify;
+  line-height: 2.5rem;
+ }
+
+ .slogan {
+  margin: 0 auto 80px auto;
+ }
+
+ /* .slogan span{
+  font-size: 2rem;
+  padding: 10px;
+  background-color: #006474;
+  color: #fcb045;
+ } */
+
+ /* animation */
+
+ .playful span {
+  position: relative;
+  color: #006474;
+  text-shadow: 0.25px 0.25px #fcb045, 0.5px 0.5px #fcb045, 0.75px 0.75px #fcb045, 1px 1px #fcb045, 1.25px 1.25px #fcb045, 1.5px 1.5px #fcb045, 1.75px 1.75px #fcb045, 2px 2px #fcb045, 2.25px 2.25px #fcb045, 2.5px 2.5px #fcb045, 2.75px 2.75px #fcb045, 3px 3px #fcb045, 3.25px 3.25px #fcb045, 3.5px 3.5px #fcb045, 3.75px 3.75px #fcb045, 4px 4px #fcb045, 4.25px 4.25px #fcb045, 4.5px 4.5px #fcb045, 4.75px 4.75px #fcb045, 5px 5px #fcb045, 5.25px 5.25px #fcb045, 5.5px 5.5px #fcb045, 5.75px 5.75px #fcb045, 6px 6px #fcb045;
+  animation: scatter 1.75s infinite;
+}
+.playful span:nth-child(2n) {
+  animation-delay: 0.3s;
+}
+.playful span:nth-child(3n) {
+  animation-delay: 0.15s;
+}
+.playful span:nth-child(5n) {
+  animation-delay: 0.4s;
+}
+.playful span:nth-child(7n), .playful span:nth-child(11n) {
+  animation-delay: 0.25s;
+}
+@keyframes scatter {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: -10px;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.slogan h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-family: 'Cocogoose', sans-serif;
+  font-weight: normal;
+  display: block;
+  width: 666px;
+  max-width: 80vw;
+  min-height: 90px;
+  height: auto;
+  text-align: center;
+  margin: 1rem auto;
+  /* margin: calc(50vh - 5rem) auto; */
+}
+
+
+/* Notre équipe */
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.otro-blockquote{
+font-size: 1.1rem;
+width:40%;
+margin:50px auto;
+font-style:italic;
+color: #555555;
+padding: 4rem 75px 2rem 75px;
+line-height:1.6;
+position: relative;
+text-align: justify;
+background-color: #00647480;
+border-radius: 10px 40% 10px 20%;
+}
+
+.otro-blockquote::before{
+content: "" ;
+color:#006474;
+font-size:4em;
+position: absolute;
+left: 10px;
+top:-10px;
+}
+
+.otro-blockquote::after{
+content: '';
+}
+
+.otro-blockquote span{
+display:block;
+color:#006474;
+font-size: 18px;
+font-style: normal;
+font-weight: bolder;
+margin-top:1em;
+}
+
+span.guillemets {
+  font-size: 3rem;
+  color: #fcb045;
+}
+
+.lateam {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  text-align: justify;
+}
+
+.associes {
+  width: 45%;
+  font-size: 1.3rem;
+  line-height: 2.5rem;
+  margin: 20px;
+}
+
+/* Fin Notre équipe */
+
+
+/* texte anime */
+
+.container-text-anime {
+  display: flex;
+  align-items: center;
+  height: 20vh;
+  overflow: hidden;
+}
+
+.scroll {
+  white-space: nowrap;
+  margin: 0 2em;
+  width: 100vw;
+}
+
+.scroll div {
+  display: flex;
+  /* gap: 2em; */
+}
+
+.scroll p {
+  font-size: 2.5rem;
+  /* color: #fcb045; */
+  color: #006474;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.RightToLeft {
+  animation: RightToLeft 20s infinite linear;
+}
+
+@keyframes  RightToLeft {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+
+/* fin texte anime */
+
+@media only screen and (max-width: 1000px) {
+  .team {
+    flex-direction: column;
+  }
+  .otro-blockquote{
+    font-size: 1rem;
+    width:80%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .concept {
+    flex-direction: column;
+    align-items: center;
+  }
+  .conceptbloc {
+    text-align: center;
+    width: 100%;
+    font-size: 1.1rem;
+  }
+  p.racines {
+    font-size: 1.1rem;
+  }
+  .slogan h1 {
+    font-size: 2.5rem;
+  }
+  .lateam {
+    flex-direction: column;
+    align-items: center;
+  }
+  .associes {
+    width: 80%;
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .global-headline p {
+    font-size: 1.1rem;
+    line-height: 2rem;
+    padding: 10px;
+  }
+
+  .otro-blockquote{
+    font-size: 1rem;
+    width:100%;
+  }
+  .parallax-section-cuisine, .parallax-section-art {
+    display: none;
+  }
+  .associes {
+    text-align: center;
+    font-size: 1.1rem;
+  }
+ 
+}
+
+
+
+/* texte en courbe */
+
+
+

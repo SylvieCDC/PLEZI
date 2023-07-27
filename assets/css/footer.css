@@ -1,0 +1,197 @@
+html {
+  overflow-x: hidden;
+}
+
+
+footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 50px 50px;
+  background: #FFFAF1;
+}
+
+footer .container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-gap: 20px;
+  text-align: justify;
+}
+
+footer .container .section h2 {
+  position: relative;
+  color: #fcb045;
+  font-weight: bold;
+  margin: 15px auto;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  
+}
+
+footer .container .aboutUs {
+  padding-right: 50px;
+  color: #006474;
+  font-size: 1.2rem;
+}
+
+footer .container .sci {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  margin-top: 24px;
+}
+
+footer .container .sci li {
+  list-style: none;
+}
+
+footer .container .sci li a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 25%;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+}
+
+footer .container .sci li a:hover {
+  background: #fcb045;
+  transform: scale(1.3);
+  transform: translateY(-10px);
+}
+
+footer .container .sci li a svg {
+  height: 40px;
+  fill: #006474;
+}
+
+footer .container .newsletter {
+  /* margin-top: 50px; */
+  width: 100%;
+  display: grid;
+}
+
+footer .container .newsletter form {
+  grid-template-columns: 3fr 1fr;
+  gap: 5px;
+}
+
+footer .container .newsletter form input,
+footer .container .newsletter form .btn {
+  height: 40px;
+  border: none;
+}
+
+footer .container .newsletter form .btn {
+  background-color: #fcb045;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+footer .container .newsletter form input::placeholder {
+  padding-left: 10px;
+  font-family: 'Varela Round', sans-serif;
+}
+
+footer .container .newsletter form button:hover {
+  padding: 0 5px;
+  background-color: #fcb04599;
+  transition: all 0.3s ease-in-out;
+}
+
+footer .container .quickLinks {
+  position: relative;
+}
+footer .container .logos ul li {
+  margin: 20px 0;
+}
+
+footer .container .quickLinks ul li {
+  list-style: none;
+}
+
+footer .container .quickLinks ul li a {
+  color: #006474;
+  display: inline-block;
+}
+
+footer .container .contact .info {
+  position: relative;
+}
+
+footer .container .contact .info li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  margin-bottom: 25px;
+
+}
+
+footer .container .contact .info li span {
+  text-align: center;
+}
+
+footer .container .contact .info li p {
+  margin: 0 0px 10px 20px;
+  font-size: 1.2rem;
+  color: #006474;
+}
+
+footer .container .contact .info li p a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+footer .container .contact .info li p a:hover {
+  color: #fcb045;
+  font-size: 1.25rem;
+}
+
+.copyright {
+  width: 100%;
+  text-align: center;
+  margin: 100px auto 0;
+}
+
+.copyright a,
+.copyright p {
+  color: #333;
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.copyright a:hover {
+  color: #fcb045;
+}
+
+/* @medias queries  */
+
+
+@media ONLY screen AND (max-width: 1093px) {
+  footer {
+    padding: 20px;
+  }
+  footer .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  footer .container .aboutUs {
+    margin: 5% auto;
+    padding: 0;
+  }
+  footer .container .sci {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 50px;
+  }
+}

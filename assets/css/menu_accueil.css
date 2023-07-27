@@ -1,0 +1,138 @@
+html {
+  overflow-x: hidden;
+}
+
+.menu_accueil {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  /* background: rgb(0, 100, 116);
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(0, 100, 116, 1) 0%,
+    rgba(0, 100, 116, 0.5494572829131652) 100%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(0, 100, 116, 1) 0%,
+    rgba(0, 100, 116, 0.5494572829131652) 100%
+  );
+  background: linear-gradient(
+    0deg,
+    rgba(0, 100, 116, 1) 0%,
+    rgba(0, 100, 116, 0.5494572829131652) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#006474",endColorstr="#006474",GradientType=1); 
+   padding: 0 2rem 2rem 2rem; */
+}
+
+.heading {
+  margin-bottom: 3vh;
+  padding-bottom: 5rem;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.heading span {
+  display: block;
+}
+
+.item-menu-left {
+  width: 50%;
+}
+
+.item-menu-right {
+  width: 50%;
+}
+
+.item-menu {
+  width: 100%;
+}
+
+.item-menu h4 {
+  font-size: 2rem;
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+  background-color: #fcb045;
+  margin: 45px auto 0;
+  user-select: none;
+}
+
+.item-menu:hover h4 {
+
+  background: url(../images/madras.jpeg) repeat;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-galerie {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-item {
+  position: relative;
+  width: 80%;
+  height: auto;
+  margin: 3rem auto;
+  box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  /* border-radius: 50%; */
+}
+
+.gallery-image {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 400ms ease-out;
+}
+
+.gallery-image:hover {
+  transform: scale(1.15);
+}
+
+.btn_menu {
+  margin: 3rem auto;
+  height: 40px;
+  border: none;
+}
+
+.btn_menu a {
+  padding: 20px;
+  background-color: #fcb045;
+  font-size: 18px;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  text-shadow: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn_menu a:hover {
+  background: #006474;
+  color: #fffaf1;
+}
+
+
+@media (max-width: 1200px) {
+  .menu-galerie {
+    flex-direction: column;
+  }
+  .item-menu-left {
+    width: 100%;
+  }
+  .item-menu-right {
+    width: 100%;
+  }
+}
+

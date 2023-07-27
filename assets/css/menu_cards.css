@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
+.content {
+  position: relative;
+  padding-bottom: 40px;
+  text-align: center;
+}
+.vertical-menu {
+  position: fixed;
+  top: 0;
+  width: auto;
+  margin-top: 200px;
+  display: block;
+  z-index: 2;
+}
+
+.vertical-menu a {
+  background-color: #fcb045;
+  color: #006474;
+  padding: 8px;
+  border-radius: 10px;
+  display: block;
+  text-decoration: none;
+  margin: 24px;
+  transition: all 0.5s ease-in-out;
+  font-family: "Cocogoose", sans-serif;
+}
+
+.vertical-menu a:hover,
+.vertical-menu a.active {
+  transform: scale(1.1);
+  color: #eeebeb;
+  background-color: #006474;
+}
+
+
+.bloc-cards {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  /* height: 100vh; */
+  padding-top: 50px;
+  /* padding-bottom: 100px; */
+}
+
+.bloc-cards h2 {
+  width: 100%;
+  text-align: center;
+  color: #006474;
+  background-color: #fcb045;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 50px 0;
+  font-size: 2.5rem;
+  
+}
+
+.image-block {
+  margin-left: 100px;
+}
+
+figure {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  min-width: 275px;
+  height: 300px;
+  border-radius: 3px 50% 3px 20%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+  margin: 40px 0px ;
+}
+figure:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+figure:hover img {
+  transform: scale(1.25);
+}
+figure:hover figcaption {
+  bottom: 0;
+}
+
+figure img {
+  height: 100%;
+  transition: 0.25s;
+}
+figure figcaption {
+  position: absolute;
+  bottom: -27%;
+  left: 0;
+  width: 100%;
+  padding: 15px 0 4px 0;
+  background-color: rgba(0, 100, 116, 0.85);
+  box-shadow: 0 0 20px rgba(0, 100, 116, 0.4);
+  /* background: rgb(0, 100, 116); */
+  color: #fcb045;
+  line-height: 2;
+  transition: 0.25s;
+}
+figure figcaption h3 {
+  margin: 0 0 10px;
+  padding: 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+figure figcaption p {
+  font-size: 16px;
+  line-height: 1.75;
+  text-align: center;
+  margin: 0 5px;
+}
+
+figure figcaption span {
+  color: transparent;
+}
+
+.marge {
+  margin-top: 100px;
+  height: 100px;
+}
+
+.interlude {
+  height: 100px;
+  border-bottom: #333 solid 1px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+
+@media screen and (max-width: 678px) {
+  .content {
+    margin: 0;
+    padding-bottom: 200px;
+  }
+  .vertical-menu {
+    padding-top: 150px ;
+    flex-direction: row;
+    white-space: wrap;
+    margin: 50px 3px;
+  }
+
+  .vertical-menu a {
+    display: inline-block;
+    margin: 5px;
+    width: 100px;
+  }
+  .bloc-cards {
+    margin: 40px auto;
+  }
+  .image-block {
+    margin: 20px auto;
+  }
+}

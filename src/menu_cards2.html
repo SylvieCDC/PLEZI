@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #headerMenuTitle {
+        margin: 20px;
+      }
+      #headerMenuTitle > h1 {
+        text-align: center;
+        font-size: 3rem;
+        color: #006474;
+        background-color: #fcb045;
+      }
+
+      .containerMenu {
+        /* width:100%; */
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding: 40px 20px;
+        margin: 0 100px;
+      }
+      .cardMenu {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        margin-bottom: 100px;
+        transition: all 0.8s ease-in-out;
+      }
+
+      .cardMenu:hover {
+        transform: scale(0.9);
+      }
+
+      .cardMenu > div {
+        box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.5);
+      }
+      .cardMenu-image {
+        width: 400px;
+        height: 250px;
+      }
+      .cardMenu-image > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .cardMenu-text {
+        margin: -30px auto;
+        margin-bottom: -50px;
+        height: 250px;
+        width: 300px;
+        background-color: #006474;
+        color: #fcb045;
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* .cardMenu-text:hover{
+  background-color:#fcb045;
+  color:#006474;
+
+} */
+
+      /* .cardMenu-meal-type{
+  font-style:italic;
+} */
+      .cardMenu-title {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        margin-top: 50px;
+      }
+      .cardMenu-body {
+        font-size: 1.25rem;
+      }
+      /* .cardMenu-price{
+  width:100px;
+  height:100px;
+  background-color:#970C0A;
+  color:#fff;
+  margin-left:auto;
+  font-size:2rem;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+} */
+    </style>
+  </head>
+  <body>
+    <div id="headerMenuTitle">
+      <div class="marge" id="starters"></div>
+      <h1>STARTERS</h1>
+      <!-- <p>The Traditional Fench Taste</p> -->
+    </div>
+    <div class="containerMenu">
+      <div class="cardMenu">
+        <div class="cardMenu-image">
+          <img src="/assets/images/starters/frites.jpeg" />
+        </div>
+        <div class="cardMenu-text">
+          <!-- <p class="cardMenu-meal-type">Breakfast/Eggs</p> -->
+          <h2 class="cardMenu-title">Frites de patate douce</h2>
+          <p class="cardMenu-body">
+            Des frites apportant cette touche de douceur qui convient à certains
+            plats, comme les bokits !
+          </p>
+        </div>
+        <!-- <div class="cardMenu-price">€56</div> -->
+      </div>
+      <div class="cardMenu">
+        <div class="cardMenu-image">
+          <img src="/assets/images/starters/alloco.png" />
+        </div>
+        <div class="cardMenu-text">
+          <!-- <p class="cardMenu-meal-type">Lunch/Meat</p> -->
+          <h2 class="cardMenu-title">Alloco</h2>
+          <p class="cardMenu-body">Bananes plantains</p>
+        </div>
+        <!-- <div class="cardMenu-price">€39</div> -->
+      </div>
+      <div class="cardMenu">
+        <div class="cardMenu-image">
+          <img src="/assets/images/starters/Coleslaw.jpg" />
+        </div>
+        <div class="cardMenu-text">
+          <!-- <p class="cardMenu-meal-type">Soups/Meat</p> -->
+          <h2 class="cardMenu-title">Coleslaw</h2>
+          <p class="cardMenu-body">Mélange de chou et carottes râpées</p>
+        </div>
+        <!-- <div class="cardMenu-price">€69</div> -->
+      </div>
+      <div class="cardMenu">
+        <div class="cardMenu-image">
+          <img src="/assets/images/starters/Pikliz.jpeg" />
+        </div>
+        <div class="cardMenu-text">
+          <!-- <p class="cardMenu-meal-type">Appetizers/Meat</p> -->
+          <h2 class="cardMenu-title">Salade Pikliz mangue, papaye et avocat</h2>
+          <p class="cardMenu-body">Salade exotique</p>
+        </div>
+        <!-- <div class="cardMenu-price">€104</div> -->
+      </div>
+    </div>
+  </body>
+</html>
