@@ -85,7 +85,7 @@ if (!$db) {
                                 if ($connInsert->execute()) {
                                     echo "<div class='mess_inscription'>Le produit a été ajouté avec succès.<br> <br>
                                 <a href='../form/add_produit_form.php' class='inscription_lien'>Ajouter un nouveau Produit</a><br><br>
-                                <a href='../form/add_produit_form.php' class='inscription_lien'>Ajouter un nouveau Produit</a>
+                                <a href='gestion_produits.php' class='inscription_lien'>Retour</a>
                                 </div>";
                                 } else {
                                     echo 'Une erreur est survenue lors de l\'ajout du produit.';
