@@ -140,6 +140,7 @@ $db = null;
                         <?php
                         // Boucle sur la variable $produits pour afficher les valeurs de chaque produit
                         foreach ($produits as $produit) {
+
                             ?>
                             <tr>
                                 <td>
@@ -150,17 +151,19 @@ $db = null;
                                 </td>
                                 <td>
                                     <?php
-                                    $imagePath = $produit['image_produit'];
-                                    $startIndex = strrpos($imagePath, "../upload_images/") + strlen("../upload_images/");
-                                    $endIndex = strrpos($imagePath, ".");
-                                    $imageName = substr($imagePath, $startIndex, $endIndex - $startIndex);
+                                    $imagePath = $produit['image_produit'] ?? ''; // Provide default value if null
+                                    $startIndex = strpos($imagePath, "../upload_images/") ?? -1; // Provide default value if not found
+                                    $endIndex = strpos($imagePath, ".", $startIndex) ?? -1; // Provide default value if not found
+                                    $imageName = ($startIndex !== -1 && $endIndex !== -1)
+                                        ? mb_substr($imagePath, $startIndex + strlen("../upload_images/"), $endIndex - $startIndex - strlen("../upload_images/"))
+                                        : '';
                                     echo $imageName;
                                     ?>
                                 </td>
-                                <td>
-                                    <?= strlen($produit['enonce_produit']) > 10 ? substr($produit['enonce_produit'], 0, 10) . '...' : $produit['enonce_produit'] ?>
-                                </td>
 
+                                <td>
+                                    <?= mb_strlen($produit['enonce_produit']) > 10 ? mb_substr($produit['enonce_produit'], 0, 10) . '...' : $produit['enonce_produit'] ?>
+                                </td>
                                 <td>
                                     <?= $produit['prix_produit'] ?>
                                 </td>

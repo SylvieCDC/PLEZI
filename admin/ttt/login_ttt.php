@@ -4,6 +4,11 @@ session_start();
 
 require_once('../config/connx.php');
 
+  // Vérifier si la connexion à la base de données a été établie
+  if (!$db) {
+    die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
