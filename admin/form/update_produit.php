@@ -16,9 +16,31 @@
   require_once("../config/connx.php");
   include_once('../../src/navbar.php');
 
+
+  // Vérifier si l'ID du produit à modifier a été envoyé via la requête GET
+  if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id_produit = $_GET['id'];
+  }
+  // Requête SQL pour récupérer les informations du produit à modifier
+  $sql = "SELECT * FROM produits WHERE id = :id_produit";
+  $stmt = $db->prepare($sql);
+  $stmt->bindParam(":id_produit", $id_produit);
+
+  $stmt->execute();
+  $produit = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+  // Récupérer les valeurs du produit à partir de la base de données
+  $titre_produit = $produit['titre_produit'];
+  $id_categorie = $produit['Id_categorie'];
+  $enonce_produit = $produit['enonce_produit'];
+  $prix_produit = $produit['prix_produit'];
+  $image_produit = $produit['image_produit'];
+
   ?>
 
-  <form class="custom__form" action="../crud/update_ttt.php" method="POST" enctype="multipart/form-data">
+  <form class="custom__form" action="../crud/newUpdate.php?id=<?= $_GET['id'] ?>" method="POST"
+    enctype="multipart/form-data">
     <h1>Modifier un produit</h1>
 
 
@@ -26,7 +48,7 @@
 
     <div class=" fileClasse " id="drop_category_logo">
       <div class="fileSousClasse ">Choisir image ou Glisser ici</div>
-      <input type='file' name="category_logo" class="fileClasseInput">
+      <input type='file' name="image_produit" class="fileClasseInput">
     </div>
 
     <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
@@ -34,7 +56,7 @@
 
     <div class="form__controls">
 
-      <input type="text" name="titre_produit" placeholder="Nom du produit" />
+      <input type="text" name="titre_produit" placeholder="<?= $titre_produit ?>" />
       <select name="nom_categorie" onchange="unselectOptions(this)">
         <?php
 
@@ -58,8 +80,8 @@
         ?>
       </select>
 
-      <textarea name="enonce_produit" placeholder="Description du produit"></textarea>
-      <input type="text" name="prix_produit" placeholder="Prix" />
+      <textarea name="enonce_produit" placeholder="<?= $enonce_produit ?>"></textarea>
+      <input type="text" name="prix_produit" placeholder="<?= $prix_produit ?>" />
       <button type="submit">Mise à jour</button>
     </div>
   </form>

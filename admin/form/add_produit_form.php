@@ -27,7 +27,7 @@
 
     <div class=" fileClasse " id="drop_category_logo">
       <div class="fileSousClasse ">Choisir image ou Glisser ici</div>
-      <input type='file' name="category_logo" class="fileClasseInput">
+      <input type='file' name="image_produit" class="fileClasseInput">
     </div>
 
     <div class="form__controls">
