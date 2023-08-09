@@ -37,26 +37,37 @@ include_once "../../config/connx.php";
                         if (is_numeric($product_in_cart['prix_produit']) && is_numeric($product_quantity)) {
                             $total += $product_in_cart['prix_produit'] * $product_quantity;
                         }
-                        
+
                         ?>
-                        <tr>
-                            <td class="img_sidebar">
-                                <img src="<?= $product_in_cart['image_produit'] ?>" alt="Photo <?= $product_in_cart['titre_produit'] ?>">
-                            </td>
-                            <td><?= $product_in_cart['titre_produit'] ?></td>
-                            <td>
-                                <?= $product_in_cart['prix_produit'] ? $product_in_cart['prix_produit']."&nbsp;€" : "0&nbsp;€" ?>
-                            </td>
-                            <td>
-                                <form action="" method="post" onsubmit="updateQuantity(event, <?= $product_in_cart['id'] ?>)">
-                                    <input type="number" name="quantity" value="<?= $product_quantity ?>" min="1">
-                                    <button type="submit"><img src="refresh.png" width="30px"></button>
-                                </form>
-                            </td>
-                            <td classe="sup">
-                                <a href="delete_produit.php?id=<?= $product_in_cart['id'] ?>"><img src="delete.png" width="30px"></a>
-                            </td>
-                        </tr>
+                        <?php
+                        if ($product_quantity > 0) {
+                            ?>
+                            <tr>
+                                <td class="img_sidebar">
+                                    <img src="<?= $product_in_cart['image_produit'] ?>"
+                                        alt="Photo <?= $product_in_cart['titre_produit'] ?>">
+                                </td>
+                                <td>
+                                    <?= $product_in_cart['titre_produit'] ?>
+                                </td>
+                                <td>
+                                    <?= $product_in_cart['prix_produit'] ? $product_in_cart['prix_produit'] . "&nbsp;€" : "0&nbsp;€" ?>
+                                </td>
+                                <td>
+                                    <form action="" method="post" onsubmit="updateQuantity(event, <?= $product_in_cart['id'] ?>)">
+                                        <input type="number" name="quantity" value="<?= $product_quantity ?>" min="0"
+                                            onchange="updateQuantity(<?= $product_in_cart['id'] ?>, this.value)">
+                                    </form>
+                                </td>
+                                <td class="sup">
+                                    <a href="delete_produit.php?id=<?= $product_in_cart['id'] ?>"><img src="delete.png"
+                                            width="30px"></a>
+                                </td>
+                            </tr>
+                            <?php
+                        } // Fin de la condition
+                        ?>
+
                         <?php
                     }
                 } else {
@@ -69,7 +80,9 @@ include_once "../../config/connx.php";
     </div>
     <div class="totalButton">
         <div class="total">
-            <div>Total : <?= $total_formatted ?>&nbsp;€</div>
+            <div>Total :
+                <?= $total_formatted ?>&nbsp;€
+            </div>
         </div>
         <div class="buttonStyles">
             <?php if (!empty($ids)): ?>

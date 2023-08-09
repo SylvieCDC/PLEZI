@@ -215,7 +215,7 @@ section.sideBar {
 
 .sideBar_product td {
   padding: 20px;
-  text-align: start;
+  text-align: center;
 }
 
 .sideBar_title {
@@ -237,10 +237,15 @@ section.sideBar {
 td form {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
 }
 td form input {
   width: 40px;
+  height: 40px;
   margin: 0 20px;
+  border: 1px solid #00647450;
+  color: #006474;
+  border-radius: 8px;
   text-align: center;
 }
 

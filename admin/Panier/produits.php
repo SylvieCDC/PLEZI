@@ -58,6 +58,7 @@ if (!empty($ids)) {
     <link rel="stylesheet" href="test.css">
     <link rel="stylesheet" href="../../assets/css/navbar.css">
     <link rel="stylesheet" href="../../assets/css/footer.css">
+
     <!-- Icon sur onglet = favicon -->
     <link rel="icon" href="../../assets/logo/LOGO_PLEZI_jaune.png" type="image/x-icon" />
     <link rel="apple_icon" href="assets/logo/LOGO_PLEZI_jaune.png" />
@@ -66,7 +67,11 @@ if (!empty($ids)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Module de paiement Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
+
+    
     <style>
         .transparente {
             color: transparent;
@@ -255,16 +260,10 @@ if (!empty($ids)) {
             xhr.send();
         }
 
-        function updateQuantity(event, productId) {
-            event.preventDefault(); // Prevent the default form submission
-
-            const quantityInput = event.target.elements.quantity;
-            const newQuantity = quantityInput.value;
-
-            // Make an AJAX request to update the quantity
+        function updateQuantity(productId, newQuantity) {
             fetch(`update_quantity.php?id=${productId}`, {
                 method: 'POST',
-                body: new URLSearchParams({ quantity: newQuantity }), // Send the new quantity as POST data
+                body: new URLSearchParams({ quantity: newQuantity }),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -273,28 +272,18 @@ if (!empty($ids)) {
                     if (!response.ok) {
                         throw new Error('Failed to update quantity.');
                     }
-                    return response.json(); // Assuming your PHP script returns JSON data
+                    return response.json();
                 })
                 .then(data => {
                     // Update the total price and quantities on the page
                     const totalElement = document.querySelector('.total div');
-                    const quantityElements = document.querySelectorAll('.quantity');
-
-                    // Update the total price
                     totalElement.textContent = `Total : ${data.total} €`;
-
-                    // Update the quantities for each product
-                    Object.entries(data.quantities).forEach(([productId, quantity]) => {
-                        const quantityElement = quantityElements.find(el => el.dataset.productId === productId);
-                        if (quantityElement) {
-                            quantityElement.textContent = quantity;
-                        }
-                    });
                 })
                 .catch(error => {
                     console.error(error);
                 });
         }
+
 
         $(document).ready(function () {
             $(".add-to-cart").click(function (event) {
@@ -331,10 +320,6 @@ if (!empty($ids)) {
                 });
             });
         });
-
-
-
-
 
 
     </script>

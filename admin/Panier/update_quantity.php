@@ -10,7 +10,7 @@ if (!$db) {
 }
 
 // Check if the product ID and new quantity are provided
-if (isset($_GET['id']) && isset($_POST['quantity']) && intval($_POST['quantity']) > 0) {
+if (isset($_GET['id']) && isset($_POST['quantity']) && intval($_POST['quantity']) >= 0) {
     $product_id = $_GET['id'];
     $new_quantity = intval($_POST['quantity']);
 
@@ -53,4 +53,6 @@ if (isset($_GET['id']) && isset($_POST['quantity']) && intval($_POST['quantity']
     http_response_code(400); // Bad request
     echo json_encode(['error' => 'Invalid request parameters.']);
 }
+
+
 ?>

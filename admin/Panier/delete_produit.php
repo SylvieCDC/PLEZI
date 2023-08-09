@@ -17,9 +17,22 @@ if (isset($_GET['id'])) {
             unset($_SESSION['panier'][$product_id]);
         }
     }
+    
 }
 
-// Rediriger l'utilisateur vers la page du panier (panier.php)
-header('Location: produits.php');
-exit();
+
+// Vérifier le referer pour déterminer d'où vient l'utilisateur
+$referer = $_SERVER['HTTP_REFERER'];
+
+if (strpos($referer, "produits.php") !== false) {
+    // Rediriger l'utilisateur vers produits.php
+    header('Location: produits.php');
+} else {
+    // Rediriger l'utilisateur vers panier.php
+    header('Location: panier.php');
+}
+exit();  // Toujours mettre un exit() après un header de redirection pour arrêter le script
+
+// Si basename($_SERVER['PHP_SELF']) ne fonctionne pas comme prévu, essayons une autre approche en utilisant la variable superglobale $_SERVER['HTTP_REFERER'] pour déterminer la page d'origine de l'utilisateur. Cependant, gardez à l'esprit que cette méthode n'est pas toujours fiable à 100 %, car tous les navigateurs ne définissent pas toujours cette valeur.
+
 ?>

@@ -25,7 +25,7 @@ if (!$db) {
     define('WIDTH_MAX', 1920);
     define('HEIGHT_MAX', 1080);
 
-    $tabExt = array('jpg', 'gif', 'png', 'jpeg');
+    $tabExt = array ('jpg', 'gif', 'png', 'jpeg');
     // $infosImg = array();
     
     $extension = '';
