@@ -1,7 +1,7 @@
 :root {
   --jaune: #fcb045;
   --bleu: #006474;
-  --sable: #eeebeb;
+  --sable: #FFFAF1
   font-family: "Varela Round", sans-serif;
 }
 
@@ -47,6 +47,7 @@
   height: 48px;
   margin-bottom: 24px;
   border-radius: 4px;
+  color: #006474;
   border: 1px solid #bdbdbd;
   outline: none;
 }
@@ -54,6 +55,7 @@
 .form__controls input::placeholder,
 .form__controls textarea::placeholder {
   padding: 10px;
+  color: #006474;
   font-family: "Varela Round", sans-serif;
 }
 

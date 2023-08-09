@@ -1,5 +1,9 @@
 <?php
-require_once('admin/config/connx.php'); // Include the database connection
+require_once('config/connx.php'); // Include the database connection
+// Vérifier si la connexion à la base de données a été établie
+if (!$db) {
+    die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
+}
 
 // Set your Stripe secret key
 \Stripe\Stripe::setApiKey('sk_test_51NXfGuEngKRgzXPTdYJwSElWj5verJiUON1ntMzwoAofv61eJv85AjeociWpMnZeW7ibSYOwOiOVM6kjypI42G4T00nKwqu6VC'); // Replace with your Stripe secret key

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../config/connx.php');
+require('../../config/connx.php');
 
 // Vérifier si la connexion à la base de données a été établie
 if (!$db) {
@@ -14,7 +14,7 @@ if (!$db) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compte</title>
-    <link rel="stylesheet" href="../css/messages.css">
+    <link rel="stylesheet" href="../../assets/css/messages.css">
 </head>
 
 <body>

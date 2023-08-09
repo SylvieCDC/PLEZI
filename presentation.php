@@ -3,7 +3,7 @@
 
 <?php
 // Inclure le fichier de connexion à la base de données
-require_once ("admin/config/connx.php");
+require_once ("config/connx.php");
 include_once 'src/head.php';
 
 ?>

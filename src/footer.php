@@ -1,7 +1,7 @@
 <footer>
   <div class="container">
     <div class="section aboutUs">
-      <img src="/plezi/assets/logo/LOGO_PLEZI_jaune.png" alt="logo PLEZI" width="150px" />
+      <img src="/assets/logo/LOGO_PLEZI_jaune.png" alt="logo PLEZI" width="150px" />
       <p>
         Bienvenue chez Plézi, un restaurant caribéen chaleureux où la cuisine gourmande vous transporte vers les
         tropiques. <br>
@@ -26,11 +26,7 @@
 
         <li>
           <a href="https://twitter.com/i/flow/login" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-              <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <path
-                d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
           </a>
         </li>
 
@@ -104,13 +100,13 @@
         <li>
           <a href="https://deliveroo.fr/fr/?utm_source=google&utm_medium=cpc&utm_term=deliveroo&utm_campaign=%2A%2A%5EAcquisition%5ESearch%5EBrand%5EFrance%5EAll%20Cities%5E%5EBroad%5EAPI%5E%5E%5E%5E%5EFR%5ELifecycle%5E%C2%A319639973230&utm_loc=9056567&utm_device=c&utm_adposition=&utm_network=g&utm_targetid=kwd-47300311509&gclid=CjwKCAjwhJukBhBPEiwAniIcNRWZMURR4PgnlU8Y-4dLsD_I9p0fHgsGgVYOYdHXkwgM6uzZI5n0CBoC7acQAvD_BwE&gclsrc=aw.ds"
             target="_blank">
-            <img src="assets/logo/Deliveroo_logo.svg.png" alt="logo deliveroo" width="200px" />
+            <img src="/assets/logo/Deliveroo_logo.svg.png" alt="logo deliveroo" width="200px" />
           </a>
         </li>
 
         <li>
           <a href="#">
-            <img src="assets/logo/UberEats-LogoPNG1.png" alt="logo UberEats" width="200px" />
+            <img src="/assets/logo/UberEats-LogoPNG1.png" alt="logo UberEats" width="200px" />
           </a>
         </li>
 
@@ -129,9 +125,9 @@
   <div class="copyright">
     <p>
       &copy;PLEZI 2023 |
-      <a href="src/cgu.html" target="blank">CGU </a> | <a href="src/mentionsLegales.txt" target="blank">MENTIONS
+      <a href="/src/cgu.html" target="blank">CGU </a> | <a href="/src/mentionsLegales.txt" target="blank">MENTIONS
         LÉGALES</a> |
-      <a href="src/politiqueConfidentialité.txt" target="blank">POLITIQUE DE CONFIDENTIALITÉ</a> |
+      <a href="/src/politiqueConfidentialité.txt" target="blank">POLITIQUE DE CONFIDENTIALITÉ</a> |
       <a href="https://www.linkedin.com/in/sylvie-carreira-da-cruz-546971197/" target="blank">by SCDC</a>
     </p>
   </div>
