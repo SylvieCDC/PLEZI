@@ -6,7 +6,7 @@
     <video class="fillWidth" width="100%" autoplay loop muted>
       <!-- <source src="assets/videos/video_plezi.mp4" type="video/mp4" autoplay loop muted> -->
       <!-- <source src="assets/videos/video_plezi2.mp4" type="video/mp4" autoplay loop muted> -->
-      <source src="assets/videos/header.mp4" type="video/mp4">
+      <source src="/assets/videos/header.mp4" type="video/mp4">
       Your browser does not support the video tag. I suggest you upgrade your browser.
     </video>
     <!--[if lte IE 6]>

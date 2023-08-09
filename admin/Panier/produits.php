@@ -2,7 +2,7 @@
 
 
 // Inclure le fichier de connexion à la base de données
-require_once("../config/connx.php");
+require_once("../../config/connx.php");
 
 // Vérifier si la connexion à la base de données a été établie
 if (!$db) {
@@ -54,7 +54,8 @@ if (!empty($ids)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma commande Plézi</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="test.css">
     <link rel="stylesheet" href="../../assets/css/navbar.css">
     <link rel="stylesheet" href="../../assets/css/footer.css">
     <!-- Icon sur onglet = favicon -->
@@ -75,160 +76,151 @@ if (!empty($ids)) {
 
 <body>
 
-    <?php
+    <div class="conteneur-main">
+        <?php
+        // Inclure la navBar
+        include_once "../../src/navbar.php";
 
-    // Inclure la navBar
-    include_once "../../src/navbar.php";
+        ?>
 
-    ?>
 
-    <div class="container_products">
+        <div class="container_products">
 
-        <section class="products_list">
-            <?php
-            // Formater le total avec deux décimales
-            $total_formatted = number_format($total, 2, ',', ' ');
-            // Récupérer les catégories depuis la base de données
-            $req = $db->query("SELECT * FROM categories");
-            $categories = $req->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($categories as $cat) {
-                $idCat = $cat['Id_categorie'];
-                // Skip the "Sauces" category (Id_categorie = 5)
-                if ($idCat === 5) {
-                    continue;
-                } ?>
-                <div class="categorie_title">
-                    <h2>
-                        <?= $cat['nom_categorie'] ?>
-                    </h2>
-                </div>
+            <section class="products_list">
 
                 <?php
-                if ($idCat === 1) {
-                    // Afficher la liste des produits
-                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 1");
-                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($products as $row) {
-                        include 'card_panier.php';
+                // Formater le total avec deux décimales
+                $total_formatted = number_format($total, 2, ',', ' ');
+                // Récupérer les catégories depuis la base de données
+                $req = $db->query("SELECT * FROM categories");
+                $categories = $req->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($categories as $cat) {
+                    $idCat = $cat['Id_categorie'];
+                    // Skip the "Sauces" category (Id_categorie = 5)
+                    if ($idCat === 5) {
+                        continue;
+                    } ?>
+                    <div class="marge"></div>
 
-                    }
-                }
+                    <div class="categorie_title" id="<?= $cat['nom_categorie'] ?>">
 
-                if ($idCat === 2) {
-                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 2");
-                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($products as $row) {
-                        include 'card_panier.php';
-                    }
+                        <h2>
+                            <?= $cat['nom_categorie'] ?>
+                        </h2>
+                    </div>
 
-                }
+                    <?php
+                    if ($idCat === 1) {
+                        // Afficher la liste des produits
+                        $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 1");
+                        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($products as $row) {
+                            include 'card_panier.php';
 
-                if ($idCat === 3) {
-                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 3");
-                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($products as $row) {
-                        include 'card_panier.php';
-                    }
-
-                }
-
-                if ($idCat === 4) {
-                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 4");
-                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($products as $row) {
-                        include 'card_panier.php';
+                        }
                     }
 
-                }
+                    if ($idCat === 2) {
+                        $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 2");
+                        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($products as $row) {
+                            include 'card_panier.php';
+                        }
 
-                if ($idCat === 5) {
-                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 5");
-                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($products as $row) {
-                        include 'card_panier.php';
+                    }
+
+                    if ($idCat === 3) {
+                        $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 3");
+                        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($products as $row) {
+                            include 'card_panier.php';
+                        }
+
+                    }
+
+                    if ($idCat === 4) {
+                        $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 4");
+                        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($products as $row) {
+                            include 'card_panier.php';
+                        }
+
+                    }
+
+                    if ($idCat === 5) {
+                        $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 5");
+                        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($products as $row) {
+                            include 'card_panier.php';
+                        }
+
+                    }
+
+                    if ($idCat === 6) {
+                        $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 6");
+                        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($products as $row) {
+                            include 'card_panier.php';
+                        }
+
+                    }
+
+                    if ($idCat === 7) {
+                        $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 7");
+                        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($products as $row) {
+                            include 'card_panier.php';
+                        }
+
                     }
 
                 }
-
-                if ($idCat === 6) {
-                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 6");
-                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($products as $row) {
-                        include 'card_panier.php';
-                    }
-
-                }
-
-                if ($idCat === 7) {
-                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 7");
-                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($products as $row) {
-                        include 'card_panier.php';
-                    }
-
-                }
-
-            }
-            ?>
+                ?>
 
 
+            </section>
+
+
+            <section class="sideBar">
+
+
+                <?php
+                include_once('load_cart_sidebar.php');
+
+                ?>
+
+
+
+
+
+            </section>
+        </div>
+
+
+        <section class="btn_small_screen">
+            <a href="/admin/Panier/panier.php" class="link">Voir Panier &nbsp;<span class="prix_panier">
+                    <?= $total_formatted ?>&nbsp;€
+                </span>
+                <!-- <span class="notif"><?= array_sum($_SESSION['panier']) ?></span> -->
+
+            </a>
         </section>
 
-
-        <section class="sideBar">
-
-            <?php
-            include_once('sidebar.php');
-            
-            ?>
-                <div class="total">
-        <?php if (empty($ids)) {
-            ?><div>Total : &nbsp;
-            0,00 &nbsp;€
-        </div> <?php
-
-        }else {
-            ?><div>Total : &nbsp;
-            <?= $total_formatted ?> &nbsp;€
-        </div> <?php
-
-        }?>
-        
-
-        
-
-        <?php
-        if (empty($ids)) {
-            ?>
-            <?php
-        } else {
-            ?>
-            <div class="btn_remove_all btn_basket" onclick="removeAllFromCart()"><a>Vider le panier</a></div>
-            <a class="btn_basket" href="pay.php">Payer</a>
-            <?php
-        }
-        ?>
     </div>
 
-        </section>
-
-    </div>
-
-    <section class="btn_small_screen">
-        <a href="/plezi/admin/Panier/panier.php" class="link">Voir Panier &nbsp;<span class="prix_panier">
-                <?= $total_formatted ?>&nbsp;€
-            </span>
-            <!-- <span class="notif"><?= array_sum($_SESSION['panier']) ?></span> -->
-
-        </a>
-    </section>
-
+    <hr>
     <?php
     // Inclure le footer et js
     include_once "../../src/footer.php";
 
     ?>
+
+    </div>
+
+
     <script src="../../assets/js/nav.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 
 
@@ -303,6 +295,39 @@ if (!empty($ids)) {
                     console.error(error);
                 });
         }
+
+        $(document).ready(function () {
+    $(".add-to-cart").click(function (event) {
+        event.preventDefault(); // Empêche le comportement par défaut du lien
+
+        var productId = $(this).data("id");
+
+        $.ajax({
+            url: 'ajouter_panier.php',
+            method: 'GET',
+            data: {
+                id: productId
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.success) {
+                    alert("Produit ajouté au panier!");
+
+                    // Recharger la barre latérale du panier
+                    $.get('load_cart_sidebar.php', function(data) {
+                        $('.sideBar_product').html(data);
+                    });
+
+                } else {
+                    alert("Erreur lors de l'ajout du produit.");
+                }
+            }
+        });
+    });
+});
+
+
+
     </script>
 
 

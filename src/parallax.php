@@ -65,7 +65,7 @@ include_once 'menu_accueil.php';
 
   <section class="section-3" id="contact">
     <div class="contact_form">
-      <h2>Laissez-nous vos avis ou commentaires !</h2>
+      <h2>Laissez-nous vos avis ou commentaires&nbsp;! </h2>
       <form action="/ma-page-de-traitement" method="post">
         <div>
           <input type="text" id="name" name="user_name" placeholder="Nom" />

@@ -7,14 +7,14 @@ if (!$db) {
     die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
 }
 
-// Requête pour récupérer tous les produits avec leurs catégories
-$sql = "SELECT p.*, c.* FROM produits p
-        INNER JOIN categories c ON p.Id_categorie = c.Id_categorie";
+// Requête pour récupérer tous les utilisateurs avec leurs rôles
+$sql = "SELECT users.*, role.* FROM users
+        LEFT JOIN role ON users.Id_role = role.Id_role";
 $stmt = $db->prepare($sql);
 $stmt->execute();
 
-// Récupération des produits dans un tableau
-$produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Récupération des users dans un tableau
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Fermeture de la connexion à la base de données
 $db = null;
@@ -122,53 +122,65 @@ $db = null;
                 $_SESSION['message'] = "";
             }
             ?>
-            <h1>Gérer les produits</h1>
+            <h1>Gérer les utilisateurs</h1>
             <section class="col-12">
                 <!-- Création d'un tableau -->
                 <table class="table" id="myTable">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Produit</th>
-                            <th>Image</th>
-                            <th>Description</th>
-                            <th>Prix</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Email</th>
+                            <th>Téléphone</th>
+                            <th>Date d'inscription</th>
+                            <th>ID ROLE</th>
+                            <th>Rôle</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        // Boucle sur la variable $produits pour afficher les valeurs de chaque produit
-                        foreach ($produits as $produit) {
+                        // Boucle sur la variable $users pour afficher les valeurs de chaque produit
+                        foreach ($users as $user) {
+                            $userId = $user['Id_user'];
+                            $nom = $user['nom'];
+                            $prenom = $user['prenom'];
+                            $email = $user['email'];
+                            $telephone = $user['telephone'];
+                            $inscription = $user['inscription_date'];
+                            $roleId = $user['Id_role'];
+                            $role = $user['nom_role']; 
 
                             ?>
                             <tr>
                                 <td>
-                                    <?= $produit['id'] ?>
+                                    <?= $userId ?>
                                 </td>
                                 <td>
-                                    <?= $produit['titre_produit'] ?>
+                                    <?= $nom ?>
                                 </td>
                                 <td>
-                                    <?php
-                                    $imagePath = $produit['image_produit'] ?? ''; // Provide default value if null
-                                    $startIndex = strpos($imagePath, "../upload_images/") ?? -1; // Provide default value if not found
-                                    $endIndex = strpos($imagePath, ".", $startIndex) ?? -1; // Provide default value if not found
-                                    $imageName = ($startIndex !== -1 && $endIndex !== -1)
-                                        ? mb_substr($imagePath, $startIndex + strlen("../upload_images/"), $endIndex - $startIndex - strlen("../upload_images/"))
-                                        : '';
-                                    echo $imageName;
-                                    ?>
+                                <?= $prenom ?>
                                 </td>
 
                                 <td>
-                                    <?= mb_strlen($produit['enonce_produit']) > 10 ? mb_substr($produit['enonce_produit'], 0, 10) . '...' : $produit['enonce_produit'] ?>
+                                    <?= $email?>
                                 </td>
                                 <td>
-                                    <?= $produit['prix_produit'] ?>
+                                    <?= $telephone ?>
                                 </td>
                                 <td>
-                                    <a href="../form/update_produit.php?id=<?= $produit['id'] ?>"><svg
+                                    <?= $inscription ?>
+                                </td>
+                                <td>
+                                    <?= $roleId ?>
+                                </td>
+                                <td>
+                                    <?= $role ?>
+                                </td>
+                                <td>
+                                    <a href="../form/update_user.php?id=<?= $userId ?>"><svg
                                             xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                             <!-- Icon for update action -->
 
@@ -176,9 +188,9 @@ $db = null;
                                                 d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
                                         </svg></a>
                                     <span class="icon-space"></span>
-                                    <!-- <a href="delete_crud_produit.php?delete_id=<?= $produit['id'] ?>"> -->
+                                    <!-- <a href="delete_crud_produit.php?delete_id=<?= $userId ?>"> -->
                                     <button type="button" class="bt" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdrop_<?= $produit['id'] ?>"> <svg
+                                        data-bs-target="#staticBackdrop_<?= $userId ?>"> <svg
                                             xmlns="http://www.w3.org/2000/svg" height="1em"
                                             viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                             <style>
@@ -209,7 +221,7 @@ $db = null;
                 </table>
                 <!-- Ajout d'un lien pour "ajouter" un produit -->
                 <div class="boutons_bas">
-                    <a href="../form/add_produit_form.php" class="btn btn-primary">Ajouter un produit</a>
+                    <a href="../form/add_user.php" class="btn btn-primary">Ajouter un utilisateur</a>
                     <a href="../../index.php" class="btn btn-primary">Retour Accueil</a>
                 </div>
             </section>
@@ -225,22 +237,22 @@ $db = null;
 
     <!-- Modal -->
     <?php
-    foreach ($produits as $key => $produit) { ?>
-        <form method="get" action="delete_crud_produit.php">
-            <div class="modal fade " id="staticBackdrop_<?= $produit['id'] ?>" data-bs-backdrop="static"
+    foreach ($users as $key => $user) { ?>
+        <form method="get" action="delete_crud_user.php">
+            <div class="modal fade " id="staticBackdrop_<?= $userId ?>" data-bs-backdrop="static"
                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="staticBackdropLabel"> Supprimer
-                                <?= $produit['titre_produit'] ?>
+                                <?= $nom ?>
                             </h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            Voulez vous supprimer définitivement ce produit ?
+                            Voulez vous supprimer définitivement cet utilisateur ?
                         </div>
-                        <input type="hidden" name="delete_id" value=<?= $produit['id'] ?>>
+                        <input type="hidden" name="delete_id" value=<?= $userId ?>>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary modBtn" data-bs-dismiss="modal">Annuler</button>
                             <button type="submit" class="btn btn-primary modBtn">Supprimer</button>

@@ -1,6 +1,8 @@
 <?php
 session_start();
-include_once "../config/connx.php";
+include_once "../../config/connx.php";
+
+$response = ["success" => false];
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $product_id = $_GET['id'];
@@ -17,9 +19,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         } else {
             $_SESSION['panier'][$product_id] = 1;
         }
+        
+        $response["success"] = true;
     }
 }
 
-header("Location: produits.php"); // Rediriger vers la page principale
-exit;
+echo json_encode($response);
+
 ?>
+

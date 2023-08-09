@@ -1,7 +1,7 @@
 <?php session_start() ?>
 <?php
 
-require_once("../config/connx.php");
+require_once("../../config/connx.php");
 
 if (!$db) {
     die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");

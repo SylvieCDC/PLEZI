@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "../config/connx.php";
+include_once "../../config/connx.php";
 require_once '../../vendor/autoload.php'; // Include the Stripe PHP SDK
 
 // Set your Stripe secret key
@@ -91,13 +91,14 @@ if (isset($_GET['del']) && is_numeric($_GET['del'])) {
             }
 
             // Create a Payment session with Stripe
+
             try {
                 $session = \Stripe\Checkout\Session::create([
                     'payment_method_types' => ['card'],
                     'line_items' => $lineItems,
                     'mode' => 'payment',
-                    'success_url' => 'http://localhost/plezi/admin/Panier/success.html',
-                    'cancel_url' => 'http://localhost/plezi/admin/Panier/cancel.html',
+                    'success_url' => 'http://plezi/admin/Panier/success.php?session_id={CHECKOUT_SESSION_ID}&Id_user=' . $userId,
+                    'cancel_url' => 'http://plezi/admin/Panier/cancel.html',
                 ]);
 
                 // Redirect the user to the payment checkout page
@@ -109,4 +110,6 @@ if (isset($_GET['del']) && is_numeric($_GET['del'])) {
                 // Optionally, you can redirect the user to an error page here
                 exit();
             }
-            ?>
+
+
+?>

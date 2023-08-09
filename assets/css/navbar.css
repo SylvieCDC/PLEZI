@@ -1,13 +1,14 @@
-
-html .open{
+html .open {
   overflow-x: hidden;
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
 body {
   font-family: 'Varela Round', sans-serif;
   background: #FFFAF1;
@@ -56,7 +57,7 @@ nav {
 }
 
 a.logo img {
-  height: 6rem;
+  height: 4rem;
   width: auto;
 }
 
@@ -101,6 +102,13 @@ a.logo img {
   background-color: #006474;
 }
 
+.menusNav {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+}
 
 .dropdown {
   position: relative;
@@ -237,12 +245,7 @@ button {
     left:padding 0rem;
   }
   .navbar {
-    height: auto;
-    background: linear-gradient(
-      0deg,
-      rgb(0, 0, 0, 0) 0%,
-      #000 50%
-    ); 
+    height: auto; 
   }
 }
 

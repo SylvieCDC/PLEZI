@@ -22,7 +22,7 @@ $ids = array_keys($_SESSION['panier']);
 if (!empty($ids)) {
     // Utiliser une requête préparée pour récupérer les produits du panier
     $inClause = implode(',', array_fill(0, count($ids), '?'));
-    $query = "SELECT id, titre_produit, prix_produit, image_produit, enonce_produit, id_categorie FROM produits WHERE id IN ($inClause)";
+    $query = "SELECT * FROM produits WHERE id IN ($inClause)";
     $stmt = $db->prepare($query);
 
     // Exécuter la requête en liant les valeurs des clés $ids à la requête préparée
@@ -42,9 +42,10 @@ if (!empty($ids)) {
         die("Error fetching products from the database.");
     }
 }
+
+
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +54,7 @@ if (!empty($ids)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma commande Plézi</title>
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../assets/css/navbar.css">
     <link rel="stylesheet" href="../../assets/css/footer.css">
     <!-- Icon sur onglet = favicon -->
@@ -81,105 +82,157 @@ if (!empty($ids)) {
 
     ?>
 
-    <section class="display_none">
+    <div class="container_products">
         <?php
 
-        // Récupérer les catégories depuis la base de données
-        $req = $db->query("SELECT * FROM categories");
-        $categories = $req->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($categories as $cat) {
-            $idCat = $cat['Id_categorie']; ?>
-            <div class="categorie_title">
-                <h2>
-                    <?= $cat['nom_categorie'] ?>
-                </h2>
-            </div>
+        // Inclure la navBar
+        include_once "tabulation.php";
+
+        ?>
+        <section class="products_list">
+            <?php
+            // Formater le total avec deux décimales
+            $total_formatted = number_format($total, 2, ',', ' ');
+            // Récupérer les catégories depuis la base de données
+            $req = $db->query("SELECT * FROM categories");
+            $categories = $req->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($categories as $cat) {
+                $idCat = $cat['Id_categorie'];
+                // Skip the "Sauces" category (Id_categorie = 5)
+                if ($idCat === 5) {
+                    continue;
+                } ?>
+
+                <div class="categorie_title" id="<?= $cat['nom_categorie'] ?>">
+                    <div class="marge"></div>
+                    <h2>
+                        <?= $cat['nom_categorie'] ?>
+                    </h2>
+                </div>
+
+                <?php
+                if ($idCat === 1) {
+                    // Afficher la liste des produits
+                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 1");
+                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($products as $row) {
+                        include 'card_panier.php';
+
+                    }
+                }
+
+                if ($idCat === 2) {
+                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 2");
+                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($products as $row) {
+                        include 'card_panier.php';
+                    }
+
+                }
+
+                if ($idCat === 3) {
+                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 3");
+                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($products as $row) {
+                        include 'card_panier.php';
+                    }
+
+                }
+
+                if ($idCat === 4) {
+                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 4");
+                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($products as $row) {
+                        include 'card_panier.php';
+                    }
+
+                }
+
+                if ($idCat === 5) {
+                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 5");
+                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($products as $row) {
+                        include 'card_panier.php';
+                    }
+
+                }
+
+                if ($idCat === 6) {
+                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 6");
+                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($products as $row) {
+                        include 'card_panier.php';
+                    }
+
+                }
+
+                if ($idCat === 7) {
+                    $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 7");
+                    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($products as $row) {
+                        include 'card_panier.php';
+                    }
+
+                }
+
+            }
+            ?>
+
+
+        </section>
+
+
+        <section class="sideBar">
 
             <?php
-            if ($idCat === 1) {
-                // Afficher la liste des produits
-                $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 1");
-                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($products as $row) {
-                    include 'card_panier.php';
+            include_once('sidebar.php');
 
+            ?>
+            <div class="total">
+                <?php if (empty($ids)) {
+                    ?>
+                    <div>Total : &nbsp;
+                        0,00 &nbsp;€
+                    </div>
+                    <?php
+
+                } else {
+                    ?>
+                    <div>Total : &nbsp;
+                        <?= $total_formatted ?> &nbsp;€
+                    </div>
+                    <?php
+
+                } ?>
+
+
+
+
+                <?php
+                if (empty($ids)) {
+                    ?>
+                    <?php
+                } else {
+                    ?>
+                    <div class="btn_remove_all btn_basket" onclick="removeAllFromCart()"><a>Vider le panier</a></div>
+                    <a class="btn_basket" href="pay.php">Payer</a>
+                    <?php
                 }
-            }
+                ?>
+            </div>
 
-            if ($idCat === 2) {
-                $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 2");
-                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($products as $row) {
-                    include 'card_panier.php';
-                }
+        </section>
 
-            }
+    </div>
 
-            if ($idCat === 3) {
-                $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 3");
-                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($products as $row) {
-                    include 'card_panier.php';
-                }
+    <section class="btn_small_screen">
+        <a href="/admin/Panier/panier.php" class="link">Voir Panier &nbsp;<span class="prix_panier">
+                <?= $total_formatted ?>&nbsp;€
+            </span>
+            <!-- <span class="notif"><?= array_sum($_SESSION['panier']) ?></span> -->
 
-            }
-
-            if ($idCat === 4) {
-                $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 4");
-                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($products as $row) {
-                    include 'card_panier.php';
-                }
-
-            }
-
-            if ($idCat === 5) {
-                $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 5");
-                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($products as $row) {
-                    include 'card_panier.php';
-                }
-
-            }
-
-            if ($idCat === 6) {
-                $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 6");
-                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($products as $row) {
-                    include 'card_panier.php';
-                }
-
-            }
-
-            if ($idCat === 7) {
-                $stmt = $db->query("SELECT id, titre_produit, prix_produit, image_produit, enonce_produit,  id_categorie FROM produits WHERE Id_categorie = 7");
-                $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($products as $row) {
-                    include 'card_panier.php';
-                }
-
-            }
-
-        }
-        ?>
-
-
+        </a>
     </section>
-
-
-    <section class="panier_small_screen">
-        <?php
-        include_once('sidebar.php');
-        ?>
-
-
-    </section>
-
-
-
-    <hr>
-
-
 
     <?php
     // Inclure le footer et js
@@ -251,41 +304,16 @@ if (!empty($ids)) {
 
                     // Update the quantities for each product
                     Object.entries(data.quantities).forEach(([productId, quantity]) => {
-                        const quantityElement = Array.from(quantityElements).find(el => el.dataset.productId === productId.toString());
+                        const quantityElement = quantityElements.find(el => el.dataset.productId === productId);
                         if (quantityElement) {
                             quantityElement.textContent = quantity;
                         }
                     });
-
-
-                    const cartCountElement = document.querySelector('#cart-count');
-                    let cartCount = 0;
-                    for (let quantity of Object.values(data.quantities)) {
-                        cartCount += quantity;
-                    }
-                    cartCountElement.textContent = cartCount;
-                    function updateCartCounter() {
-                        const cartCountElement = document.querySelector('#cart-count');
-                        let cartCount = 0;
-
-                        // Si vous pouvez envoyer les quantités actuelles du panier dans la réponse :
-                        // for (let quantity of Object.values(data.quantities)) {
-                        //   cartCount += quantity;
-                        // }
-
-                        // Sinon, augmentez simplement le compteur de 1 (ou de la quantité ajoutée)
-                        cartCount = parseInt(cartCountElement.textContent) + 1;
-
-                        cartCountElement.textContent = cartCount;
-                    }
-
-
                 })
                 .catch(error => {
                     console.error(error);
                 });
         }
-
     </script>
 
 

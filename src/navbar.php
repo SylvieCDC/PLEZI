@@ -9,7 +9,7 @@ if (!$db) {
 }
 
 // Set a default value if 'prenom' is not set
-$prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : ''; 
+$prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : '';
 
 // Initialiser la variable $role avec une valeur par défaut (0) si la clé 'role' n'est pas présente dans $_SESSION
 $role = isset($_SESSION['Id_role']) ? $_SESSION['Id_role'] : 0;
@@ -41,8 +41,11 @@ if (!empty($ids)) {
       $product_id = $product['id'];
       $product_quantity = $_SESSION['panier'][$product_id];
 
+      // Convertir le prix du produit en entier
+      $prix_produit = intval($product['prix_produit']);
+
       // Ajouter le prix unitaire du produit multiplié par la quantité au total
-      $total += $product['prix_produit'] * $product_quantity;
+      $total += $prix_produit * $product_quantity;
     }
   } else {
     // Handle the error appropriately (e.g., log the error or display a user-friendly message)
@@ -58,31 +61,51 @@ if (!empty($ids)) {
       <div class="left_menu">
         <!-- logo -->
         <div class="logo_content">
-          <a href="/plezi/index.php" class="logo">
-            <img src="/plezi/assets/logo/LOGO_PLEZI_jaune.png" alt="logo PLEZI" />
+          <a href="/index.php" class="logo">
+            <img src="/assets/logo/LOGO_PLEZI_jaune.png" alt="logo PLEZI" />
           </a>
 
         </div>
       </div>
 
       <div class="secondary_nav" id="secondary_nav">
-        <a href="/plezi/index.php#header"><span class="original">Accueil </span> <span class="traduction">Bèl
+        <a href="/Accueil"><span class="original">Accueil </span> <span class="traduction">Bèl
             Bonjou</span></a>
-        <a href="/plezi/admin/Panier/produits.php"><span class="original">Nos Menus </span><span class="traduction">Ti
-            Plézi'w</span></a>
-        <a href="/plezi/presentation.php"><span class="original">Notre Histoire </span><span class="traduction">Origin
+        <ul>
+          <li class="dropdown secondary_nav">
+
+            <!-- Afficher différents menus déroulants en fonction du rôle de l'utilisateur -->
+
+            <a href="/admin/Panier/produits.php"><span class="original">Nos Menus </span><span class="traduction">Ti
+                Plézi'w</span></a>
+            <ul class="dropdown-content">
+              <li><a href="/admin/Panier/produits.php">Tous nos menus</a></li>
+              <li>
+                <?php
+                // Récupérer les catégories depuis la base de données
+                $req = $db->query("SELECT * FROM categories");
+                $categories = $req->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($categories as $cat) {
+                  $idCat = $cat['Id_categorie'];
+                  $nomCategorie = $cat['nom_categorie'];
+                  // Exclure la catégorie avec id_categorie = 5
+                  if ($idCat === 5) {
+                    continue;
+                  }
+                  ?>
+                  <a href="/admin/Panier/produits.php#<?= $nomCategorie ?>">
+                    <?= $nomCategorie ?>
+                  </a>
+                <?php } ?>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <a href="/presentation.php"><span class="original">Notre Histoire </span><span class="traduction">Origin
             nou</span></a>
-        <a href="/plezi/index.php#contact"><span class="original">Contact </span><span
-            class="traduction">Kontak</span></a>
-        <a href="/plezi/admin/Panier/produits.php" class="link">Panier<span class="notif">
-            <?php if (empty($ids)) {
-              echo "";
-            } else {
-              echo array_sum($_SESSION['panier']);
-            } ?>
-          </span>
-          <!-- <span class="total"><?= $total ?> €</span> -->
-        </a>
+        <a href="/index.php#contact"><span class="original">Contact </span><span class="traduction">Kontak</span></a>
+        <a href="/admin/Panier/panier.php" class="link">Panier </a>
 
         <?php
         // Vérifier si l'utilisateur est connecté
@@ -97,11 +120,11 @@ if (!empty($ids)) {
                 echo $prenom; ?>&nbsp;!
               </a>
               <ul class="dropdown-content">
-                <li><a href="/plezi/admin/form/add_produit_form.php">Ajouter un produit</a></li>
-                <li><a href="/plezi/admin/crud/gestion_produits.php">Gestion des produits</a></li>
-                <li><a href="/plezi/admin/crud/gestion_utilisateurs.php">Gestion des utilisateurs</a></li>
-                <li><a href="/plezi/admin/crud/gestion_commandes.php">Gestion des commandes</a></li>
-                <li><a href="/plezi/admin/ttt/deconnexion.php">Déconnexion</a></li>
+                <li><a href="/admin/form/add_produit_form.php">Ajouter un produit</a></li>
+                <li><a href="/admin/crud/gestion_produits.php">Gestion des produits</a></li>
+                <li><a href="/admin/crud/gestion_users.php">Gestion des utilisateurs</a></li>
+                <li><a href="/admin/crud/gestion_commandes.php">Gestion des commandes</a></li>
+                <li><a href="/ttt/deconnexion.php">Déconnexion</a></li>
               </ul>
             </li>
           </ul>
@@ -112,9 +135,9 @@ if (!empty($ids)) {
                 <?php echo $prenom; ?>&nbsp;!
               </a>
               <ul class="dropdown-content">
-                <li><a href="/plezi/mon_compte.php">Gestion du Compte</a></li>
-                <li><a href="/plezi/mes_commandes.php">Mes commandes</a></li>
-                <li><a href="/plezi/admin/ttt/deconnexion.php">Déconnexion</a></li>
+                <li><a href="/../admin/form/account.php">Gestion du Compte</a></li>
+                <li><a href="/mes_commandes.php">Mes commandes</a></li>
+                <li><a href="/ttt/deconnexion.php">Déconnexion</a></li>
               </ul>
 
             </li>
@@ -122,7 +145,7 @@ if (!empty($ids)) {
 
         <?php } else {
 
-          echo '<a href="/plezi/admin/form/login.php"><i class="fa-solid fa-user"></i></a>';
+          echo '<a href="/form/login.php"><i class="fa-solid fa-user"></i></a>';
         }
         ?>
 
@@ -145,15 +168,14 @@ if (!empty($ids)) {
     </div>
 
     <div class="mobile_menu hidden">
-      <a href="/plezi/index.php #header"><span class="original">Accueil </span> <span class="traduction">Bèl
+      <a href="/index.php #header"><span class="original">Accueil </span> <span class="traduction">Bèl
           Bonjou</span></a>
-      <a href="/plezi/admin/Panier/produits.php"><span class="original">Nos Menus </span><span class="traduction">Ti
+      <a href="/admin/Panier/produits.php"><span class="original">Nos Menus </span><span class="traduction">Ti
           Plézi'w</span></a>
-      <a href="/plezi/presentation.php"><span class="original">Notre Histoire </span><span class="traduction">Origin
+      <a href="/presentation.php"><span class="original">Notre Histoire </span><span class="traduction">Origin
           nou</span></a>
-      <a href="/plezi/index.php #contact"><span class="original">Contact </span><span
-          class="traduction">Kontak</span></a>
-      <a href="/plezi/admin/Panier/produits.php" class="original">Panier</a>
+      <a href="/index.php #contact"><span class="original">Contact </span><span class="traduction">Kontak</span></a>
+      <a href="/admin/Panier/produits.php" class="original">Panier</a>
 
       <?php
       // Vérifier si l'utilisateur est connecté
@@ -164,11 +186,11 @@ if (!empty($ids)) {
           echo $prenom; ?>&nbsp;!
         </a>
         <ul class="dropdown-content">
-          <li><a href="/plezi/admin/form/add_produit_form.php">Ajouter un produit</a></li>
-          <li><a href="/plezi/admin/crud/gestion_produits.php">Gestion des produits</a></li>
-          <li><a href="/plezi/admin/crud/gestion_utilisateurs.php">Gestion des utilisateurs</a></li>
-          <li><a href="/plezi/admin/crud/gestion_commandes.php">Gestion des commandes</a></li>
-          <li><a href="/plezi/admin/ttt/deconnexion.php">Déconnexion</a></li>
+          <li><a href="/admin/form/add_produit_form.php">Ajouter un produit</a></li>
+          <li><a href="/admin/crud/gestion_produits.php">Gestion des produits</a></li>
+          <li><a href="/admin/crud/gestion_utilisateurs.php">Gestion des utilisateurs</a></li>
+          <li><a href="/admin/crud/gestion_commandes.php">Gestion des commandes</a></li>
+          <li><a href="/ttt/deconnexion.php">Déconnexion</a></li>
         </ul>
       <?php } elseif ($role == 2) { // Utilisateur connecté mais pas admin ?>
         <ul>
@@ -177,14 +199,14 @@ if (!empty($ids)) {
               <?php echo $prenom; ?>&nbsp;!
             </a>
             <ul class="dropdown-content">
-              <li><a href="/plezi/mon_compte.php">Gestion du Compte</a></li>
-              <li><a href="/plezi/mes_commandes.php">Mes commandes</a></li>
-              <li><a href="/plezi/admin/ttt/deconnexion.php">Déconnexion</a></li>
+              <li><a href="/mon_compte.php">Gestion du Compte</a></li>
+              <li><a href="/mes_commandes.php">Mes commandes</a></li>
+              <li><a href="/ttt/deconnexion.php">Déconnexion</a></li>
             </ul>
 
           <?php } else {
 
-        echo '<a href="/plezi/admin/form/login.php"><i class="fa-solid fa-user"></i></a>';
+        echo '<a href="/form/login.php"><i class="fa-solid fa-user"></i></a>';
       }
       ?>
     </div>

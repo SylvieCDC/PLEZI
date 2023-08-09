@@ -5,15 +5,17 @@
   <meta charset="UTF-8" />
 
   <link rel="stylesheet" href="../css/produitsForm.css" />
-  <link rel="stylesheet" href="/plezi/assets/css/navbar.css">
+  <link rel="stylesheet" href="/assets/css/navbar.css">
   <title>Image input</title>
 </head>
+
 
 <body>
 
   <?php
+  require_once('../../ttt/middleware.php');
   // Inclure le fichier de connexion à la base de données
-  require_once("../config/connx.php");
+  require_once("../../config/connx.php");
   include_once('../../src/navbar.php');
 
   ?>

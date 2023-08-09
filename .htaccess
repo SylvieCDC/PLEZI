@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# RewriteRule ^plezi/index.php$ /accueil [L,R=301]
+RewriteRule ^Accueil$   /index.php [L]
+RewriteRule ^Menus$   /admin/Panier/produits.php [L]
+
+
+

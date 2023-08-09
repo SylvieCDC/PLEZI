@@ -79,11 +79,13 @@
                 </div>
                 <div class="associes">
                   <span class="guillemets">«</span>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat in ad rerum voluptate magni
-                  reiciendis minus itaque pariatur doloremque necessitatibus, mollitia eum numquam ducimus sapiente
-                  tempore iusto alias autem dolores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-                  laboriosam alias officiis adipisci autem numquam nam, eos voluptates rerum vero quibusdam laborum
-                  deserunt vel exercitationem itaque. Inventore ratione amet facere.
+                  Yannis à l'époque avait un très bon poste dans le domaine de
+                  l'agro-alimentaire, et moi je n'étais
+                  toujours qu'un étudiant. <br>Lors d'un forum organisé par mon école de commerce, c'est là où je l'ai
+                  approché et depuis ce n'est que du plezi ! <br><br> Je suis ce que l'on appelle un bébé Martiniquais,
+                  né en hexagone mais grandi en Martinique.<br> Mon
+                  coeur
+                  est resté sur cette île aux mille saveurs. <br>Je souhaite à travers Plezi vous partager mon enfance.
                   <span class="guillemets">»</span><br>
                   <span>&mdash; Yannis</span>
                 </div>

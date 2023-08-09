@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "../config/connx.php";
+include_once "../../config/connx.php";
 
 // Vérifier si la connexion à la base de données a été établie
 if (!$db) {

@@ -1,8 +1,9 @@
 <!-- head -->
 
 <?php
-require_once ("admin/config/connx.php");
-include_once 'src/head.php';
+require_once ("config/connx.php");
+include_once ('src/head.php');
+include_once('messages/message.php');
 
 ?>
 
