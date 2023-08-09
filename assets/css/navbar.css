@@ -160,6 +160,12 @@ a.logo img {
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   overflow: hidden; /* Ajoutez overflow: hidden pour masquer le contenu */
+  background: linear-gradient(
+    0deg,
+    rgb(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0, 1) 80%
+  ); 
+  transition: background-color 0.3s ease-in-out; /*Ajouter une transition à la couleur de fond*/
   transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out; /* Ajoutez une transition pour l'opacité et la hauteur */
 }
 
@@ -196,6 +202,10 @@ a.logo img {
   color: #FFFAF1;
   background-color: #006474;
 
+}
+
+.dropdown-content-mobile {
+  margin-left: 21px;
 }
 
 button {

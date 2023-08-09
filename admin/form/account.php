@@ -59,8 +59,7 @@ if(isset($_SESSION['Id_user'])) {
         }
 
 
-        input[type='submit'],
-        button {
+        input[type='submit'].compte {
             padding: 15px 40px;
             background: #006474;
             color: #fcb045;
@@ -73,8 +72,8 @@ if(isset($_SESSION['Id_user'])) {
             font-family: 'Encode Sans', sans-serif;
         }
 
-        input[type='submit']:hover,
-        button:hover {
+        input.compte:hover
+         {
             background: #fcb045;
             color: #006474;
         }
@@ -88,7 +87,7 @@ if(isset($_SESSION['Id_user'])) {
             width: 640px;
             box-shadow: 0px 0px 10px 1px rgba(black, 0.35);
             overflow: hidden;
-            margin: 100px auto;
+            margin: 160px auto;
             
         }
 
@@ -323,7 +322,7 @@ if(isset($_SESSION['Id_user'])) {
                     </div>
                     <input type="hidden" name="action" value="delete_account">
 
-                    <input type='submit' value='Supprimer le compte' />
+                    <input type='submit' class="compte" value='Supprimer le compte' />
                 </form>
             </div>
             <div class='tab acc'>
@@ -364,7 +363,7 @@ if(isset($_SESSION['Id_user'])) {
                         </div>
                     </div>
                   
-                    <input type='submit' value='Enregistrer' />
+                    <input type='submit' class="compte" value='Enregistrer' />
                 </form>
             </div>
 
@@ -373,6 +372,7 @@ if(isset($_SESSION['Id_user'])) {
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="../../assets/js/nav.js"></script>
 
 
         <script>

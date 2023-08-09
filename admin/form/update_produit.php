@@ -90,7 +90,7 @@
   </form>
   <div id="custom__print-files"></div>
 
-
+  <script src="../../assets/js/nav.js"></script>
   <script>
     function unselectOptions(selectElement) {
       const options = selectElement.options;

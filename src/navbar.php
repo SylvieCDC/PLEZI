@@ -168,47 +168,36 @@ if (!empty($ids)) {
     </div>
 
     <div class="mobile_menu hidden">
-      <a href="/index.php #header"><span class="original">Accueil </span> <span class="traduction">Bèl
-          Bonjou</span></a>
-      <a href="/admin/Panier/produits.php"><span class="original">Nos Menus </span><span class="traduction">Ti
-          Plézi'w</span></a>
-      <a href="/presentation.php"><span class="original">Notre Histoire </span><span class="traduction">Origin
-          nou</span></a>
-      <a href="/index.php #contact"><span class="original">Contact </span><span class="traduction">Kontak</span></a>
-      <a href="/admin/Panier/produits.php" class="original">Panier</a>
-
-      <?php
-      // Vérifier si l'utilisateur est connecté
-      if ($role == 1) { ?>
-
-        <a>Bonjour
-          <?php
-          echo $prenom; ?>&nbsp;!
-        </a>
-        <ul class="dropdown-content">
-          <li><a href="/admin/form/add_produit_form.php">Ajouter un produit</a></li>
-          <li><a href="/admin/crud/gestion_produits.php">Gestion des produits</a></li>
-          <li><a href="/admin/crud/gestion_utilisateurs.php">Gestion des utilisateurs</a></li>
-          <li><a href="/admin/crud/gestion_commandes.php">Gestion des commandes</a></li>
-          <li><a href="/ttt/deconnexion.php">Déconnexion</a></li>
-        </ul>
-      <?php } elseif ($role == 2) { // Utilisateur connecté mais pas admin ?>
-        <ul>
-          <li class="dropdown secondary_nav">
-            <a>Bonjour
-              <?php echo $prenom; ?>&nbsp;!
-            </a>
-            <ul class="dropdown-content">
-              <li><a href="/mon_compte.php">Gestion du Compte</a></li>
-              <li><a href="/mes_commandes.php">Mes commandes</a></li>
-              <li><a href="/ttt/deconnexion.php">Déconnexion</a></li>
-            </ul>
-
-          <?php } else {
-
-        echo '<a href="/form/login.php"><i class="fa-solid fa-user"></i></a>';
-      }
-      ?>
+    <?php
+            // Vérifier si l'utilisateur est connecté
+            if ($role == 1) {
+                echo "<a>Bonjour $prenom&nbsp;!</a>";
+                echo '<ul class="dropdown-content-mobile">';
+                echo '<li><a href="/admin/form/add_produit_form.php">Ajouter un produit</a></li>';
+                echo '<li><a href="/admin/crud/gestion_produits.php">Gestion des produits</a></li>';
+                echo '<li><a href="/admin/crud/gestion_users.php">Gestion des utilisateurs</a></li>';
+                echo '<li><a href="/ttt/deconnexion.php">Déconnexion</a></li>';
+                echo '</ul>';
+            } elseif ($role == 2) {
+                echo "<a>Bonjour $prenom&nbsp;!</a>";
+                echo '<ul class="dropdown-content-mobile">';
+                echo '<li><a href="/admin/form/account.php">Gestion du Compte</a></li>';
+                echo '<li><a href="/ttt/deconnexion.php">Déconnexion</a></li>';
+                echo '</ul>';
+            } else {
+                echo '<a href="/form/login.php"><i class="fa-solid fa-user"></i></a>';
+            }
+            ?>
+            <a href="/Accueil"><span class="original">Accueil </span><span class="traduction">Bèl
+                    Bonjou</span></a>
+            <a href="/admin/Panier/produits.php"><span class="original">Nos Menus </span><span class="traduction">Ti
+                    Plézi'w</span></a>
+            <a href="/presentation.php"><span class="original">Notre Histoire </span><span class="traduction">Origin
+                    nou</span></a>
+            <a href="/index.php#contact"><span class="original">Contact </span><span class="traduction">Kontak</span></a>
+            <a href="/admin/Panier/panier.php" class="original">Panier</a>
+            
+        </div>
     </div>
-  </div>
+
 </nav>

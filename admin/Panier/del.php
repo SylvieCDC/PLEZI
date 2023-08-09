@@ -18,13 +18,8 @@ if (isset($_GET['del']) && is_numeric($_GET['del'])) {
 
     // Vérifier si le produit existe dans le panier
     if (isset($_SESSION['panier'][$product_id])) {
-        // Diminuer la quantité du produit dans le panier
-        $_SESSION['panier'][$product_id] -= 1;
-
-        // Si la quantité atteint zéro, supprimer le produit du panier
-        if ($_SESSION['panier'][$product_id] <= 0) {
-            unset($_SESSION['panier'][$product_id]);
-        }
+        // Supprimer le produit du panier
+        unset($_SESSION['panier'][$product_id]);
     }
 }
 ?>

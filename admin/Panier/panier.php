@@ -169,7 +169,7 @@ if (!empty($ids)) {
 
     <section class="panier_small_screen">
         <?php
-        include_once('sidebar.php');
+        include_once('load_cart_sidebar.php');
         ?>
 
 
@@ -285,6 +285,7 @@ if (!empty($ids)) {
                     console.error(error);
                 });
         }
+        
 
     </script>
 
