@@ -199,7 +199,7 @@ if (!empty($ids)) {
 
         <section class="btn_small_screen">
             <a href="/admin/Panier/panier.php" class="link">Voir Panier &nbsp;<span class="prix_panier">
-                    <?= $total_formatted ?>&nbsp;€
+                    <?= number_format($total, 2, ',', '') ?>&nbsp;€
                 </span>
                 <!-- <span class="notif"><?= array_sum($_SESSION['panier']) ?></span> -->
 
@@ -297,34 +297,43 @@ if (!empty($ids)) {
         }
 
         $(document).ready(function () {
-    $(".add-to-cart").click(function (event) {
-        event.preventDefault(); // Empêche le comportement par défaut du lien
+            $(".add-to-cart").click(function (event) {
+                event.preventDefault();
 
-        var productId = $(this).data("id");
+                var productId = $(this).data("id");
 
-        $.ajax({
-            url: 'ajouter_panier.php',
-            method: 'GET',
-            data: {
-                id: productId
-            },
-            dataType: 'json',
-            success: function (response) {
-                if (response.success) {
-                    alert("Produit ajouté au panier!");
+                $.ajax({
+                    url: 'ajouter_panier.php',
+                    method: 'GET',
+                    data: {
+                        id: productId
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.success) {
+                            alert("Produit ajouté au panier!");
 
-                    // Recharger la barre latérale du panier
-                    $.get('load_cart_sidebar.php', function(data) {
-                        $('.sideBar_product').html(data);
-                    });
+                            // Format total to show 2 decimal places
+                            var formattedTotal = parseFloat(response.total).toFixed(2).replace('.', ',');
 
-                } else {
-                    alert("Erreur lors de l'ajout du produit.");
-                }
-            }
+                            // Mise à jour du total du panier
+                            $(".prix_panier").text(formattedTotal + " €");
+
+                            // Recharger la barre latérale du panier
+                            $.get('load_cart_sidebar.php', function (data) {
+                                $('.sideBar_product').html(data);
+                            });
+
+                        } else {
+                            alert("Erreur lors de l'ajout du produit.");
+                        }
+                    }
+                });
+            });
         });
-    });
-});
+
+
+
 
 
 
