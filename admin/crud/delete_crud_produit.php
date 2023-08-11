@@ -8,6 +8,7 @@ if (!$db) {
     die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
 }
 
+
 // Suppression d'un produit
 if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];

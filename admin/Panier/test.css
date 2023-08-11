@@ -49,10 +49,11 @@ span.total {
 
 section.products_list {
   display: flex;
-
+flex-direction: row;
+flex-wrap: nowrap;
   flex: 1;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   overflow-y: auto;
 }
 .product {
@@ -184,8 +185,11 @@ section.products_list {
 }
 
 .totalButton {
+  /* position: fixed; */
   height: 120px;
   width: 100%;
+  /* bottom: 0; */
+  background-color: #fffaf1;
 }
 .buttonStyles {
   display: flex;
@@ -211,6 +215,7 @@ section.sideBar {
   display: flex;
   flex-direction: column;
   /* height: 100vh; */
+
 }
 
 .sideBar_product td {

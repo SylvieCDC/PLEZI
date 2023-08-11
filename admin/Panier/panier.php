@@ -168,6 +168,7 @@ if (!empty($ids)) {
 
 
     <section class="panier_small_screen">
+        
         <?php
         include_once('load_cart_sidebar.php');
         ?>

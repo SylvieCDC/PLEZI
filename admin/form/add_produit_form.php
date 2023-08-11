@@ -18,6 +18,12 @@
   require_once("../../config/connx.php");
   include_once('../../src/navbar.php');
 
+  if (!isset($_SESSION['Id_role']) || $_SESSION['Id_role'] != 1) {
+    // Redirigez vers une page d'erreur ou une autre page
+    header('Location: /index.php');
+    exit;
+}
+
   ?>
 
 
@@ -63,6 +69,8 @@
     </div>
   </form>
   <div id="custom__print-files"></div>
+
+  <script src="../../assets/js/nav.js"></script>
 
 
   <script>
