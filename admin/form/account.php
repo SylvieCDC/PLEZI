@@ -3,6 +3,16 @@ session_start();
 
 require_once('../../config/connx.php');
 
+if (!$db) {
+    die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
+}
+
+if (!isset($_SESSION['Id_role'])) {
+    // Redirigez vers une page d'erreur ou une autre page
+    header('Location: /index.php');
+    exit;
+}
+
 
 // Vérifier si l'utilisateur est connecté
 if(isset($_SESSION['Id_user'])) {

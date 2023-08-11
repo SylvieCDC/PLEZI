@@ -24,7 +24,11 @@ include_once ('../../src/navbar.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-
+if (!isset($_SESSION['Id_role']) || $_SESSION['Id_role'] != 1) {
+  // Redirigez vers une page d'erreur ou une autre page
+  header('Location: /index.php');
+  exit;
+}
 ?>
     
 

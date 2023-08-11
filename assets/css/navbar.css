@@ -67,7 +67,7 @@ a.logo img {
   margin-left: 0.75rem;
 }
 
-.secondary_nav a {
+.secondary_nav a, .xxx {
   font-family: 'Varela Round', sans-serif;
   text-decoration: none;
   text-align: center;
@@ -208,11 +208,61 @@ a.logo img {
   margin-left: 21px;
 }
 
+
 button {
   background-color: transparent;
   border: none;
   font-size: xx-large;
   padding: auto 10px;
+}
+
+
+.mobile_menu.visible {
+  transform: translateX(0);
+  
+}
+
+.dropdown-content {
+  display: none;  /* Par défaut, le contenu déroulant est masqué */
+}
+
+.dropdown-content.show-dropdown {
+  display: block; /* Lorsqu'il a la classe 'show-dropdown', il est affiché */
+}
+
+/* Notification du panier */
+.link {
+  margin: 20px;
+  width: fit-content;
+  position: relative;
+  text-decoration: 0;
+  background-color: #006474;
+  color: #fcb045;
+  padding: 10px 25px;
+  border-radius: 6px;
+  font-size: 2rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.link:hover {
+  background-color: #fcb045;
+  color: #006474;
+}
+
+span.notif {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  /* background-color: #fcb045; */
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #006474;
+  z-index: 10;
 }
 
 /* MEDIAS QUERIES  */
@@ -257,45 +307,5 @@ button {
   .navbar {
     height: auto; 
   }
-}
-
-.mobile_menu.visible {
-  transform: translateX(0);
-  
-}
-
-/* Notification du panier */
-.link {
-  margin: 20px;
-  width: fit-content;
-  position: relative;
-  text-decoration: 0;
-  background-color: #006474;
-  color: #fcb045;
-  padding: 10px 25px;
-  border-radius: 6px;
-  font-size: 2rem;
-  transition: all 0.5s ease-in-out;
-}
-
-.link:hover {
-  background-color: #fcb045;
-  color: #006474;
-}
-
-span.notif {
-  position: absolute;
-  top: 3px;
-  right: 5px;
-  /* background-color: #fcb045; */
-  height: 30px;
-  width: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: 12px;
-  color: #006474;
-  z-index: 10;
 }
 
