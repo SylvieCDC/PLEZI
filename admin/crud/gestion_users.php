@@ -35,7 +35,7 @@ $db = null;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gérer les produits</title>
+    <title>Gérer les utilisateurs</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
 
@@ -156,7 +156,7 @@ $db = null;
                             $telephone = $user['telephone'];
                             $inscription = $user['inscription_date'];
                             $roleId = $user['Id_role'];
-                            $role = $user['nom_role']; 
+                            $role = $user['nom_role'];
 
                             ?>
                             <tr>
@@ -167,11 +167,11 @@ $db = null;
                                     <?= $nom ?>
                                 </td>
                                 <td>
-                                <?= $prenom ?>
+                                    <?= $prenom ?>
                                 </td>
 
                                 <td>
-                                    <?= $email?>
+                                    <?= $email ?>
                                 </td>
                                 <td>
                                     <?= $telephone ?>
@@ -194,7 +194,7 @@ $db = null;
                                                 d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
                                         </svg></a>
                                     <span class="icon-space"></span>
-                                    <!-- <a href="delete_crud_produit.php?delete_id=<?= $userId ?>"> -->
+                                    <input type="hidden" name="delete_id" value="<?= $userId ?>">
                                     <button type="button" class="bt" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop_<?= $userId ?>"> <svg
                                             xmlns="http://www.w3.org/2000/svg" height="1em"
@@ -243,9 +243,10 @@ $db = null;
 
     <!-- Modal -->
     <?php
-    foreach ($users as $key => $user) { ?>
+    foreach ($users as $key => $user) {
+        ?>
         <form method="get" action="delete_crud_user.php">
-            <div class="modal fade " id="staticBackdrop_<?= $userId ?>" data-bs-backdrop="static"
+            <div class="modal fade " id="staticBackdrop_<?= $user['Id_user'] ?>" data-bs-backdrop="static"
                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -279,14 +280,15 @@ $db = null;
 
 
     <script>
-        var table = new DataTable('#myTable', {
-            language: {
-                url: '//cdn.datatables.net/plug-ins/1.13.5/i18n/fr-FR.json',
-            },
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.5/i18n/fr-FR.json',
+                },
+            });
         });
-
-
     </script>
+
 </body>
 
 </html>
