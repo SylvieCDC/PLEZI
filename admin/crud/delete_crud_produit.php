@@ -2,13 +2,6 @@
 session_start();
 require('../../config/connx.php');
 
-
-// Vérifier si la connexion à la base de données a été établie
-if (!$db) {
-    die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
-}
-
-
 // Suppression d'un produit
 if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
@@ -24,7 +17,7 @@ if (isset($_GET['delete_id'])) {
         $imageName = $product['image_produit'];
 
         // 2. Supprimer l'image du serveur
-        $imagePath = "../upload_images/" . $imageName;  // Remplacez "chemin_vers_dossier_upload_images" par le chemin réel vers votre dossier d'images
+        $imagePath = "../upload_images/" . $imageName;  
         if (file_exists($imagePath)) {
             unlink($imagePath);
         }

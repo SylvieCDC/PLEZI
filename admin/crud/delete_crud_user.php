@@ -8,20 +8,18 @@ if (!$db) {
     die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
 }
 
-// Suppression d'un produit
+// Suppression d'un utilisateur
 if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
 
-    // Requête de suppression
+    // Requête de suppression d'un user de la bdd
     $deleteSql = "DELETE FROM users WHERE Id_user = :id";
     $deleteStmt = $db->prepare($deleteSql);
     $deleteStmt->bindParam(':id', $deleteId);
     $deleteStmt->execute();
 
-    $_SESSION['message'] = `L'utilisateur' a été supprimé avec succès.`;
+    $_SESSION['message'] = "L'utilisateur a été supprimé avec succès.";
     header('Location: gestion_users.php');
     exit();
 }
-
-
 ?>

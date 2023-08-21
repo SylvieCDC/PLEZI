@@ -22,6 +22,7 @@ if(isset($_SESSION['Id_user'])) {
     $email = $_SESSION['email'];
     $telephone = $_SESSION['telephone'];
 
+
     // Requête SQL pour récupérer les informations de l'utilisateur
     $sql = "SELECT * FROM users WHERE Id_user = :id_user";
     $stmt = $db->prepare($sql);
