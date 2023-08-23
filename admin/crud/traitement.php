@@ -2,9 +2,13 @@
 session_start();
 require('../../config/connx.php');
 
-// Vérifier si la connexion à la base de données a été établie
 if (!$db) {
     die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
+}
+
+function sendErrorResponse($message = 'Une erreur s\'est produite.') {
+    echo $message;
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -26,89 +30,72 @@ if (!$db) {
     define('HEIGHT_MAX', 1080);
 
     $tabExt = array('jpg', 'gif', 'png', 'jpeg');
-    // $infosImg = array();
+    $tabMimes = array('image/jpeg', 'image/jpg', 'image/gif', 'image/png');
     
-    $extension = '';
-    $nomImage = '';
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (!empty($_FILES['image_produit']['name'])) {
-            $extension = pathinfo($_FILES['image_produit']['name'], PATHINFO_EXTENSION);
+        if (empty($_FILES['image_produit']['name'])) {
+            sendErrorResponse('Veuillez sélectionner une image à télécharger.');
+        }
 
-            // Test getimagesize on the uploaded file
-            $imageSizeInfo = getimagesize($_FILES['image_produit']['tmp_name']);
-            if ($imageSizeInfo === false) {
-                die("Error getting image size.");
-            }
+        $extension = pathinfo($_FILES['image_produit']['name'], PATHINFO_EXTENSION);
+        if (!in_array(strtolower($extension), $tabExt)) {
+            sendErrorResponse('L\'extension du fichier n\'est pas autorisée.');
+        }
 
+        $finfo = new finfo(FILEINFO_MIME_TYPE);
+        $mime = $finfo->file($_FILES['image_produit']['tmp_name']);
+        if (!in_array($mime, $tabMimes)) {
+            sendErrorResponse('Le type du fichier n\'est pas autorisé.');
+        }
 
-            if (in_array(strtolower($extension), $tabExt)) {
-                $infosImg = getimagesize($_FILES['image_produit']['tmp_name']);
+        $infosImg = getimagesize($_FILES['image_produit']['tmp_name']);
+        if (!$infosImg || $infosImg[0] > WIDTH_MAX || $infosImg[1] > HEIGHT_MAX || filesize($_FILES['image_produit']['tmp_name']) > MAX_SIZE) {
+            sendErrorResponse('L\'image dépasse les dimensions ou la taille maximale autorisée.');
+        }
 
-                if ($infosImg[2] >= 1 && $infosImg[2] <= 14) {
-                    if (($infosImg[0] <= WIDTH_MAX) && ($infosImg[1] <= HEIGHT_MAX) && (filesize($_FILES['image_produit']['tmp_name']) <= MAX_SIZE)) {
-                        if (isset($_FILES['image_produit']['error']) && UPLOAD_ERR_OK === $_FILES['image_produit']['error']) {
-                            $nomImage = md5(uniqid()) . '.' . $extension;
+        $nomImage = md5(uniqid()) . '.' . $extension;
+        if (!move_uploaded_file($_FILES['image_produit']['tmp_name'], TARGET . '/' . $nomImage)) {
+            sendErrorResponse('Une erreur est survenue lors du téléchargement de l\'image.');
+        }
+        chmod(TARGET . '/' . $nomImage, 0644);
 
-                            if (move_uploaded_file($_FILES['image_produit']['tmp_name'], TARGET . '/' . $nomImage)) {
-                                chmod(TARGET . '/' . $nomImage, 0644);
+        $nomProduit = htmlspecialchars($_POST['titre_produit']);
+        $nomCatSelected = intval($_POST['nom_categorie']);
+        $description = htmlspecialchars($_POST['enonce_produit']);
+        $prix = htmlspecialchars($_POST['prix_produit']);
+        if (!is_numeric($prix) || $prix < 0) {
+            sendErrorResponse('Prix non valide.');
+        }
 
-                                $nomProduit = htmlspecialchars($_POST['titre_produit']);
-                                $nomCatSelected = intval($_POST['nom_categorie']);
-                                $description = htmlspecialchars($_POST['enonce_produit']);
-                                $prix = htmlspecialchars($_POST['prix_produit']);
-                                $cheminImage = '../upload_images/' . $nomImage;
+        $cheminImage = '../upload_images/' . $nomImage;
+        
+        $reqCategorie = 'SELECT Id_categorie FROM categories WHERE Id_categorie = :idCategorie';
+        $connCategorie = $db->prepare($reqCategorie);
+        $connCategorie->bindParam(':idCategorie', $nomCatSelected);
+        $connCategorie->execute();
+        $rowCategorie = $connCategorie->fetch(PDO::FETCH_ASSOC);
 
-                                // Récupération de l'ID de catégorie correspondant au nom de catégorie
-                                $reqCategorie = 'SELECT Id_categorie FROM categories WHERE Id_categorie = :idCategorie';
-                                $connCategorie = $db->prepare($reqCategorie);
-                                $connCategorie->bindParam(':idCategorie', $nomCatSelected);
-                                $connCategorie->execute();
-                                $rowCategorie = $connCategorie->fetch(PDO::FETCH_ASSOC);
+        if (!$rowCategorie) {
+            sendErrorResponse("La catégorie spécifiée n'a pas été trouvée.");
+        }
 
-                                if (!$rowCategorie) {
-                                    echo "La catégorie spécifiée n'a pas été trouvée.";
-                                    exit;
-                                }
+        $idCategorie = $rowCategorie['Id_categorie'];
 
-                                $idCategorie = $rowCategorie['Id_categorie'];
+        $reqInsert = 'INSERT INTO produits (titre_produit, Id_categorie, enonce_produit, prix_produit, image_produit) VALUES (:nomProduit, :idCategorie, :description, :prix, :cheminImage)';
+        $connInsert = $db->prepare($reqInsert);
+        $connInsert->bindParam(':nomProduit', $nomProduit);
+        $connInsert->bindParam(':idCategorie', $idCategorie);
+        $connInsert->bindParam(':description', $description);
+        $connInsert->bindParam(':prix', $prix);
+        $connInsert->bindParam(':cheminImage', $cheminImage);
 
-                                // Insertion des données dans la base de données
-                                $reqInsert = 'INSERT INTO produits (titre_produit, Id_categorie, enonce_produit, prix_produit, image_produit) VALUES (:nomProduit, :idCategorie, :description, :prix, :cheminImage)';
-                                $connInsert = $db->prepare($reqInsert);
-                                $connInsert->bindParam(':nomProduit', $nomProduit);
-                                $connInsert->bindParam(':idCategorie', $idCategorie);
-                                $connInsert->bindParam(':description', $description);
-                                $connInsert->bindParam(':prix', $prix);
-                                $connInsert->bindParam(':cheminImage', $cheminImage);
-
-                                if ($connInsert->execute()) {
-                                    echo "<div class='mess_inscription'>Le produit a été ajouté avec succès.<br> <br>
-                                <a href='../form/add_produit_form.php' class='inscription_lien'>Ajouter un nouveau Produit</a><br><br>
-                                <a href='gestion_produits.php' class='inscription_lien'>Retour</a>
-                                </div>";
-                                } else {
-                                    echo 'Une erreur est survenue lors de l\'ajout du produit.';
-                                }
-                            } else {
-                                echo 'Une erreur est survenue lors du téléchargement de l\'image.';
-                            }
-                        } else {
-                            echo 'Une erreur est survenue lors du téléchargement de l\'image.';
-                        }
-                    } else {
-                        echo 'L\'image dépasse les dimensions ou la taille maximale autorisée.';
-                    }
-                } else {
-                    echo 'Le fichier téléchargé n\'est pas une image valide.';
-                }
-            } else {
-                echo 'L\'extension du fichier n\'est pas autorisée.';
-            }
+        if ($connInsert->execute()) {
+            echo "<div class='mess_inscription'>Le produit a été ajouté avec succès.<br> <br>
+            <a href='../form/add_produit_form.php' class='inscription_lien'>Ajouter un nouveau Produit</a><br><br>
+            <a href='gestion_produits.php' class='inscription_lien'>Retour</a>
+            </div>";
         } else {
-            echo 'Veuillez sélectionner une image à télécharger.';
+            sendErrorResponse('Une erreur est survenue lors de l\'ajout du produit.');
         }
     }
-
-
     ?>

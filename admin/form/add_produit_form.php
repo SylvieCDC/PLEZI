@@ -16,7 +16,6 @@
 <body>
 
   <?php
-  require_once('../../ttt/middleware.php');
   // Inclure le fichier de connexion à la base de données
   require_once("../../config/connx.php");
   include_once('../../src/navbar.php');
@@ -38,7 +37,7 @@
 
     <div class=" fileClasse " id="drop_category_logo">
       <div class="fileSousClasse ">Choisir image ou Glisser ici</div>
-      <input type='file' name="image_produit" class="fileClasseInput">
+      <input type='file' name="image_produit" class="fileClasseInput" accept="image/*" required>
     </div>
 
     <div class="form__controls">

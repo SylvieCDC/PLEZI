@@ -62,7 +62,7 @@ $message = "<div class='mess_inscription'>$message<br><a href='../form/signUp.ph
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compte</title>
+    <title>Créer un Compte</title>
     <link rel="stylesheet" href="../assets/css/messages.css">
     <style>
         @font-face {
