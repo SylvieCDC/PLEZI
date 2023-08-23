@@ -3,10 +3,13 @@
 
 <head>
   <meta charset="UTF-8" />
+  <!-- Icon sur onglet = favicon -->
+  <link rel="icon" href="/assets/logo/LOGO_PLEZI_jaune.png" type="image/x-icon" />
+  <link rel="apple_icon" href="/assets/logo/LOGO_PLEZI_jaune.png" />
 
   <link rel="stylesheet" href="../css/produitsForm.css" />
   <link rel="stylesheet" href="/assets/css/navbar.css">
-  <title>Image input</title>
+  <title>Modifier Produit</title>
 </head>
 
 <body>
@@ -17,13 +20,13 @@
   include_once('../../src/navbar.php');
   if (!$db) {
     die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
-}
+  }
 
-if (!isset($_SESSION['Id_role']) || $_SESSION['Id_role'] != 1) {
-  // Redirigez vers une page d'erreur ou une autre page
-  header('Location: /index.php');
-  exit;
-}
+  if (!isset($_SESSION['Id_role']) || $_SESSION['Id_role'] != 1) {
+    // Redirigez vers une page d'erreur ou une autre page
+    header('Location: /index.php');
+    exit;
+  }
 
   // Vérifier si l'ID du produit à modifier a été envoyé via la requête GET
   if (isset($_GET['id']) && !empty($_GET['id'])) {

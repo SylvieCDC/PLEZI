@@ -4,9 +4,12 @@
 <head>
   <meta charset="UTF-8" />
 
+  <!-- Icon sur onglet = favicon -->
+  <link rel="icon" href="/assets/logo/LOGO_PLEZI_jaune.png" type="image/x-icon" />
+  <link rel="apple_icon" href="/assets/logo/LOGO_PLEZI_jaune.png" />
   <link rel="stylesheet" href="../css/produitsForm.css" />
   <link rel="stylesheet" href="/assets/css/navbar.css">
-  <title>update user</title>
+  <title>Modifier Utilisateur</title>
 </head>
 
 <body>
@@ -17,13 +20,13 @@
   include_once('../../src/navbar.php');
   if (!$db) {
     die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
-}
+  }
 
-if (!isset($_SESSION['Id_role']) || $_SESSION['Id_role'] != 1) {
-  // Redirigez vers une page d'erreur ou une autre page
-  header('Location: /index.php');
-  exit;
-}
+  if (!isset($_SESSION['Id_role']) || $_SESSION['Id_role'] != 1) {
+    // Redirigez vers une page d'erreur ou une autre page
+    header('Location: /index.php');
+    exit;
+  }
   // Vérifier si l'ID du user à modifier a été envoyé via la requête GET
   if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id_user = $_GET['id'];
@@ -59,7 +62,7 @@ if (!isset($_SESSION['Id_role']) || $_SESSION['Id_role'] != 1) {
       <input type="text" name="nom" placeholder="<?= $nom ?>" />
       <input type="text" name="prenom" placeholder="<?= $prenom ?>" />
       <input type="email" name="email" placeholder="<?= $email ?>" />
-      <input type="tel" name="telephone" placeholder= "<?= $phone ?>" />
+      <input type="tel" name="telephone" placeholder="<?= $phone ?>" />
       <select name="nom_role" onchange="unselectOptions(this)">
         <?php
 
@@ -69,7 +72,7 @@ if (!isset($_SESSION['Id_role']) || $_SESSION['Id_role'] != 1) {
           2 => ['Id_role' => 2, 'nom_role' => 'User'],
         ];
 
-    
+
 
         foreach ($roles as $role => $nomRole) {
           $idRole = $nomRole['Id_role'];

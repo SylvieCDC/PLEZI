@@ -15,7 +15,7 @@ if (!isset($_SESSION['Id_role'])) {
 
 
 // Vérifier si l'utilisateur est connecté
-if(isset($_SESSION['Id_user'])) {
+if (isset($_SESSION['Id_user'])) {
     $id = $_SESSION['Id_user'];
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
@@ -30,12 +30,12 @@ if(isset($_SESSION['Id_user'])) {
 
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    if($user) {
+    if ($user) {
         $nom = $user['nom'];
         $prenom = $user['prenom'];
         $email = $user['email'];
         $telephone = $user['telephone'];
-    } 
+    }
 } else {
     // Rediriger vers la page de connexion ou afficher un message d'erreur
     echo "Vous devez être connecté pour accéder à cette page.";
@@ -50,7 +50,10 @@ if(isset($_SESSION['Id_user'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Icon sur onglet = favicon -->
+    <link rel="icon" href="/assets/logo/LOGO_PLEZI_jaune.png" type="image/x-icon" />
+    <link rel="apple_icon" href="/assets/logo/LOGO_PLEZI_jaune.png" />
+    <title>Profil</title>
     <link rel="stylesheet" href="/assets/css/navbar.css">
 
     <style>
@@ -83,8 +86,7 @@ if(isset($_SESSION['Id_user'])) {
             font-family: 'Encode Sans', sans-serif;
         }
 
-        input.compte:hover
-         {
+        input.compte:hover {
             background: #fcb045;
             color: #006474;
         }
@@ -99,7 +101,7 @@ if(isset($_SESSION['Id_user'])) {
             box-shadow: 0px 0px 10px 1px rgba(black, 0.35);
             overflow: hidden;
             margin: 160px auto;
-            
+
         }
 
         .settings .tabs {
@@ -132,8 +134,7 @@ if(isset($_SESSION['Id_user'])) {
 
         .settings .tabs .tab.apps ul li a.remove {
             font-size: 30px;
-            #006474
-            transition: 0.15s ease-in-out;
+            #006474 transition: 0.15s ease-in-out;
         }
 
         .settings .tabs .tab.apps ul li a.remove:hover {
@@ -177,7 +178,7 @@ if(isset($_SESSION['Id_user'])) {
         .settings .tabs .tab.prof .field label {
             font-size: .8em;
             font-style: italic;
-            
+
         }
 
         .settings .tabs .tab.prof .bio {
@@ -287,8 +288,7 @@ if(isset($_SESSION['Id_user'])) {
 
         .settings .tab-links a {
             width: 100%;
-            #006474
-            text-decoration: none;
+            #006474 text-decoration: none;
             text-align: center;
         }
 
@@ -296,19 +296,18 @@ if(isset($_SESSION['Id_user'])) {
             font-size: 1rem;
             color: gray;
         }
-
     </style>
 </head>
 
 <body>
 
-<?php
-  require_once('../../ttt/middleware.php');
-  // Inclure le fichier de connexion à la base de données
-  require_once("../../config/connx.php");
-  include_once('../../src/navbar.php');
+    <?php
+    require_once('../../ttt/middleware.php');
+    // Inclure le fichier de connexion à la base de données
+    require_once("../../config/connx.php");
+    include_once('../../src/navbar.php');
 
-  ?>
+    ?>
     <div class='settings'>
         <div class='tab-links'>
             <a href='#' class='active'>Profil</a>
@@ -326,8 +325,8 @@ if(isset($_SESSION['Id_user'])) {
                             <label for='pfp'><img src='http://lorempixel.com/200/200' /></label>
                         </div> -->
                             <div class='field'>
-                                
-                                <input type='text' id='nom' name='nom' value='<?=$nom?>&nbsp;<?=$prenom?>' />
+
+                                <input type='text' id='nom' name='nom' value='<?= $nom ?>&nbsp;<?= $prenom ?>' />
                             </div>
                         </div>
                     </div>
@@ -343,15 +342,17 @@ if(isset($_SESSION['Id_user'])) {
                         <h2 style='margin: 0'>Modifiez votre mot de passe</h2>
                         <div class='field'>
                             <label for='password'>Nouveau Mot De Passe</label>
-                            <input type='password' id='password' name="pass"/>
+                            <input type='password' id='password' name="pass" />
                         </div>
                         <div class='field'>
                             <label for='newpass2'>Confirmez Nouveau Mot De Passe</label>
-                            <input type='password' id='newpass2' name="verifpass"/>
+                            <input type='password' id='newpass2' name="verifpass" />
                         </div>
                     </div>
                     <div class='email'>
-                        <h2 style='margin: 0'>Modifiez votre email <br> <?=$email?></h2>
+                        <h2 style='margin: 0'>Modifiez votre email <br>
+                            <?= $email ?>
+                        </h2>
                         <div class='field'>
                             <label for='newemail'>Nouvel Email</label>
                             <input type='email' id='newemail' />
@@ -362,10 +363,13 @@ if(isset($_SESSION['Id_user'])) {
                         </div>
                     </div>
                     <div class='numb'>
-                        <h2 style='margin: 0'>Modifiez votre numéro de téléphone <br><?=$telephone?></h2>
+                        <h2 style='margin: 0'>Modifiez votre numéro de téléphone <br>
+                            <?= $telephone ?>
+                        </h2>
                         <div class='field'>
                             <label for='newphone'>Nouveau Téléphone</h2>
-                        <div class='field'></label>
+                                <div class='field'>
+                            </label>
                             <input type='email' id='newphone' />
                         </div>
                         <div class='field'>
@@ -373,63 +377,63 @@ if(isset($_SESSION['Id_user'])) {
                             <input type='email' id='newphone2' />
                         </div>
                     </div>
-                  
+
                     <input type='submit' class="compte" value='Enregistrer' />
                 </form>
             </div>
 
         </div>
-        </div>
+    </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="../../assets/js/nav.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../assets/js/nav.js"></script>
 
 
-        <script>
+    <script>
 
+        var settings = $(".settings"),
+            tabLinks = settings.find(".tab-links");
+        tabs = settings.find(".tabs");
+
+        function setBar() {
             var settings = $(".settings"),
-                tabLinks = settings.find(".tab-links");
-            tabs = settings.find(".tabs");
+                tabLinks = settings.find(".tab-links"),
+                tabs = settings.find('.tabs'),
+                tabswidth = 0;
 
-            function setBar() {
-                var settings = $(".settings"),
-                    tabLinks = settings.find(".tab-links"),
-                    tabs = settings.find('.tabs'),
-                    tabswidth = 0;
-
-                tabs.children().each(function () {
-                    tabswidth += $(this).outerWidth();
-                })
-
-                tabs.width(tabswidth)
-
-                tabLinks.find(".bar").css({ 'width': " " + 100 / tabLinks.find("a").length + "% " })
-                tabLinks.find(".bar").css({ 'transform': "translate(" + ((tabLinks.find(".active").offset().left) - (tabLinks.offset().left)) + "px, 0)" })
-                tabs.find(".tab").eq(tabLinks.find(".active").index()).addClass("active")
-
-            }
-
-            setBar();
-
-            tabLinks.find("a").not("a.acitve").on('click', function (e) {
-                e.preventDefault();
-
-                tabLinks.find(".active").removeClass("active")
-                $(this).addClass("active")
-
-                tabLinks.find(".bar").css({ 'transform': "translate(" + ((tabLinks.find(".active").offset().left) - (tabLinks.offset().left)) + "px, 0)" })
-                tabs.find(".tab.active").removeClass("active")
-                tabs.find(".tab").eq(tabLinks.find(".active").index()).addClass("active")
-
-                var activeOffset = tabs.find(".active").offset().left - tabs.offset().left
-
-                tabs.css({ "transform": "translate(-" + activeOffset + "px, 0px)" })
-
+            tabs.children().each(function () {
+                tabswidth += $(this).outerWidth();
             })
 
+            tabs.width(tabswidth)
 
-        </script>
+            tabLinks.find(".bar").css({ 'width': " " + 100 / tabLinks.find("a").length + "% " })
+            tabLinks.find(".bar").css({ 'transform': "translate(" + ((tabLinks.find(".active").offset().left) - (tabLinks.offset().left)) + "px, 0)" })
+            tabs.find(".tab").eq(tabLinks.find(".active").index()).addClass("active")
+
+        }
+
+        setBar();
+
+        tabLinks.find("a").not("a.acitve").on('click', function (e) {
+            e.preventDefault();
+
+            tabLinks.find(".active").removeClass("active")
+            $(this).addClass("active")
+
+            tabLinks.find(".bar").css({ 'transform': "translate(" + ((tabLinks.find(".active").offset().left) - (tabLinks.offset().left)) + "px, 0)" })
+            tabs.find(".tab.active").removeClass("active")
+            tabs.find(".tab").eq(tabLinks.find(".active").index()).addClass("active")
+
+            var activeOffset = tabs.find(".active").offset().left - tabs.offset().left
+
+            tabs.css({ "transform": "translate(-" + activeOffset + "px, 0px)" })
+
+        })
+
+
+    </script>
 </body>
 
 </html>
