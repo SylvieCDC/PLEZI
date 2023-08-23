@@ -11,6 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = trim($_POST["pass"]);
     $passwordVerif = trim($_POST["passConfirm"]);
 
+    $pattern = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+
     // Validation des champs
     if (!preg_match("/^[\p{L}\s]+$/u", $nom) || !preg_match("/^[\p{L}\s]+$/u", $prenom)) {
         $message = "Le nom et le prénom doivent seulement contenir des lettres et des accents.";
@@ -20,6 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $message = "Merci de remplir tous les champs.";
     } elseif ($password !== $passwordVerif) {
         $message = "Les mots de passe ne correspondent pas.";
+    } elseif (!preg_match($pattern, $password)) {
+        $message = "Le mot de passe doit comporter au moins 8 caractères, dont une majuscule, une minuscule, un chiffre et un caractère spécial.";   
     } else {
         $stmt = $db->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->execute([':email' => $email]);
