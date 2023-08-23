@@ -71,7 +71,7 @@ if (!empty($ids)) {
     <!-- Module de paiement Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
 
-    
+
     <style>
         .transparente {
             color: transparent;

@@ -19,7 +19,7 @@
 
   <!-- Icon sur onglet = favicon -->
   <link rel="icon" href="/assets/logo/LOGO_PLEZI_jaune.png" type="image/x-icon" />
-  <link rel="apple_icon" href="/assets/logo/LOGO_PLEZI_jaune.png"/>
+  <link rel="apple_icon" href="/assets/logo/LOGO_PLEZI_jaune.png" />
 
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="/assets/css/racines.css" />
   <link rel="stylesheet" href="/assets/css/menu_cards.css" />
   <link rel="stylesheet" href="/assets/css/menu.css" />
-  
+
   <style>
     @font-face {
       font-family: 'Cocogoose';

@@ -95,26 +95,28 @@ if (!$db) {
                         if ($inscription->execute()) {
 
 
-                        echo "<div class='mess_inscription'>Utilisateur crée.<br><br>
+                            echo "<div class='mess_inscription'>Utilisateur crée.<br><br>
                         <a href='gestion_users.php' class='inscription_lien'>Retour</a></div>";
-                    } else {
-                        echo "<div class='mess_inscription'>Les mots de passe ne correspondent pas<br><br>
+                        } else {
+                            echo "<div class='mess_inscription'>Les mots de passe ne correspondent pas<br><br>
                         <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
+                        }
+                    } else {
+                        echo "<div class='mess_inscription'>L'adresse mail existe déjà<br> <br>
+                    <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
                     }
                 } else {
-                    echo "<div class='mess_inscription'>L'adresse mail existe déjà<br> <br>
-                    <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
+                    echo "<div class='mess_inscription'>L'adresse mail n'est pas valide<br><br>
+                <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
                 }
             } else {
-                echo "<div class='mess_inscription'>L'adresse mail n'est pas valide<br><br>
-                <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
-            }
-        } else {
-            echo "<div class='mess_inscription'>Merci de remplir tous les champs<br><br>
+                echo "<div class='mess_inscription'>Merci de remplir tous les champs<br><br>
             <a href=../form/add_user.php' class='inscription_lien'>Retour</a></div>";
+            }
         }
-    }}
+    }
 
     ?>
 </body>
+
 </html>

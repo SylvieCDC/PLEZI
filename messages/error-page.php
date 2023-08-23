@@ -10,6 +10,9 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Index Page</title>
+    <!-- Icon sur onglet = favicon -->
+    <link rel="icon" href="/assets/logo/LOGO_PLEZI_jaune.png" type="image/x-icon" />
+    <link rel="apple_icon" href="/assets/logo/LOGO_PLEZI_jaune.png" />
     <!-- Add your CSS styling here -->
     <style>
         /* Styling for the modal overlay */
@@ -50,12 +53,14 @@ session_start();
 
 
 
-   <!-- Display the modal overlay and modal container -->
-   <div class="modal-overlay" id="modal-overlay"></div>
-       <div class="modal-container" id="modal-container">
-         <!-- Display the message and remove it from the session -->
-       <div class="modal-message"><h1>NO PERMISSIONS</h1></div>
-       </div>
+    <!-- Display the modal overlay and modal container -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-container" id="modal-container">
+        <!-- Display the message and remove it from the session -->
+        <div class="modal-message">
+            <h1>NO PERMISSIONS</h1>
+        </div>
+    </div>
 
 
     <!-- Add your JavaScript to show the modal -->

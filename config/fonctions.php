@@ -1,6 +1,6 @@
 <?php
 
-include_once ('connx.php');
+include_once('connx.php');
 
 // Fonction pour récupérer un produit par son ID
 function findProduitById($id)
@@ -107,7 +107,8 @@ function updateProduit($id, $nomProduit, $nomCatSelected, $description, $prix, $
 }
 
 
-function reDirect($url, $message) {
+function reDirect($url, $message)
+{
     global $db;
 
     // Sauvegarder le message dans une variable de session
@@ -120,5 +121,3 @@ function reDirect($url, $message) {
 
 
 ?>
-
-

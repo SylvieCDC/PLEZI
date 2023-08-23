@@ -8,7 +8,7 @@ define("DB_NAME", "bdd_plezi");
 
 try {
     // DSN de connexion
-    $dsn = "mysql:dbname=".DB_NAME.";host=".DB_HOST;
+    $dsn = "mysql:dbname=" . DB_NAME . ";host=" . DB_HOST;
 
     // on se connecte à la base de données
     $options = array(
@@ -16,7 +16,7 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Active le mode d'erreur PDOException
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Définit le mode de récupération par défaut en tableau associatif
         PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8" // Définit le jeu de caractères en UTF-8
-        
+
     );
 
     // on instancie PDO avec les options
