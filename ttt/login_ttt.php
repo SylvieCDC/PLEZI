@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"]) && isset($_PO
         $prenom = $row["prenom"];
         $telephone = $row["telephone"];
         $id = $row["email"];
-        $role = $row["Id_role"];
+        $role = $row["Id_role"]; 
         $token = $row["token"];
         $inscription_date = $row["inscription_date"];
 
@@ -57,12 +57,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"]) && isset($_PO
             exit();
         } else {
             // Mot de passe incorrect
-            $message = "<div class='mess_inscription'>Mot de passe incorrect<br><br>
+            echo"<div class='mess_inscription'>Mot de passe incorrect<br><br>
         <a href='../form/login.php' class='inscription_lien'>Je me connecte</a></div>";
         }
     } else {
         // Utilisateur non trouvé dans la base de données
-        $message = "<div class='mess_inscription'>Utilisateur non trouvé dans la base de données<br><br>
+        echo "<div class='mess_inscription'>Utilisateur non trouvé dans la base de données<br><br>
     <a href='../form/signUp.php' class='inscription_lien'>Je m'inscris</a></div>";
     }
 }
