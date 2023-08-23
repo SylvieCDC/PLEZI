@@ -1,9 +1,8 @@
-
 <!-- head -->
 
 <?php
 // Inclure le fichier de connexion à la base de données
-require_once ("config/connx.php");
+require_once("config/connx.php");
 include_once 'src/head.php';
 
 ?>
@@ -12,49 +11,50 @@ include_once 'src/head.php';
 
 <body class="open">
 
-<!-- NAVBAR -->
-<?php
+  <!-- NAVBAR -->
+  <?php
 
-include_once 'src/navbar.php';
+  include_once 'src/navbar.php';
 
-?>
-<!-- FIN NAVBAR -->
+  ?>
+  <!-- FIN NAVBAR -->
 
-<!-- BANNER -->
+  <!-- BANNER -->
 
-<div class="banner">
+  <div class="banner">
 
-</div>
+  </div>
 
-<!-- FIN BANNER -->
+  <!-- FIN BANNER -->
 
-<!-- RACINES CONCEPT TEAM -->
+  <!-- RACINES CONCEPT TEAM -->
 
-<?php
+  <?php
 
-include_once 'src/presentation.php';
+  include_once 'src/presentation.php';
 
   ?>
 
-    <!-- FOOTER  -->
+  <!-- FOOTER  -->
 
-    <?php
+  <?php
 
-include_once 'src/footer.php';
+  include_once 'src/footer.php';
 
-?>
+  ?>
 
-<!-- FIN FOOTER  -->
+  <!-- FIN FOOTER  -->
 
-<!-- SCRIPTS JS -->
+  <!-- SCRIPTS JS -->
 
-<?php
+  <?php
 
-include_once 'src/scripts_js.php';
+  include_once 'src/scripts_js.php';
 
-?>
+  ?>
 
-<!-- FIN SCRIPTS JS -->
+  <!-- FIN SCRIPTS JS -->
 
-  </body>
-  </html>
+</body>
+
+</html>

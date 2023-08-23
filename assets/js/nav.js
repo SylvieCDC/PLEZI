@@ -23,14 +23,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Ecouteur pour le dropdown du menu mobile
-  const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle');
-  if (mobileDropdownToggle) { // Si l'élément existe
-      mobileDropdownToggle.addEventListener('click', function() {
-          const dropdownMenu = this.nextElementSibling;
-          if (dropdownMenu) {
-              dropdownMenu.classList.toggle('visible'); // Vous pouvez ajouter des classes pour gérer l'affichage comme vous le souhaitez
-          }
-      });
+  const mobileDropdownToggle = document.querySelector(
+    ".mobile-dropdown-toggle"
+  );
+  if (mobileDropdownToggle) {
+    // Si l'élément existe
+    mobileDropdownToggle.addEventListener("click", function () {
+      const dropdownMenu = this.nextElementSibling;
+      if (dropdownMenu) {
+        dropdownMenu.classList.toggle("visible"); // Vous pouvez ajouter des classes pour gérer l'affichage comme vous le souhaitez
+      }
+    });
   }
 
   // Gérer le redimensionnement de l'écran
@@ -60,5 +63,3 @@ document.addEventListener("DOMContentLoaded", function () {
     requestAnimationFrame(scroll);
   }
 });
-
-

@@ -1,5 +1,3 @@
-
-
 <!-- VIDEO -->
 <div class="parallax-section-4" id="header">
   <div id="video-container">
@@ -16,4 +14,4 @@
 </div>
 
 
-  <!-- FIN VIDEO -->
+<!-- FIN VIDEO -->

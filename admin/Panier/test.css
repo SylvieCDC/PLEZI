@@ -49,8 +49,8 @@ span.total {
 
 section.products_list {
   display: flex;
-flex-direction: row;
-flex-wrap: nowrap;
+  flex-direction: row;
+  flex-wrap: nowrap;
   flex: 1;
   flex-wrap: wrap;
   justify-content: center;
@@ -215,7 +215,6 @@ section.sideBar {
   display: flex;
   flex-direction: column;
   /* height: 100vh; */
-
 }
 
 .sideBar_product td {
@@ -527,11 +526,10 @@ tr {
   .btn_small_screen {
     display: block;
   }
-  
 }
 
 @media only screen and (max-width: 768px) {
- .sideBar_product{
+  .sideBar_product {
     background-color: transparent;
   }
   .link {
@@ -565,7 +563,6 @@ tr {
   .img_sidebar img {
     display: block;
   }
-
 }
 
 @media only screen and (max-width: 630px) {

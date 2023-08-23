@@ -2,7 +2,6 @@ html {
   overflow-x: hidden;
 }
 
-
 footer {
   position: relative;
   bottom: 0;
@@ -10,7 +9,7 @@ footer {
   width: 100%;
   height: auto;
   padding: 50px 50px;
-  background: #FFFAF1;
+  background: #fffaf1;
 }
 
 footer .container {
@@ -28,7 +27,6 @@ footer .container .section h2 {
   margin: 15px auto;
   margin-bottom: 50px;
   text-transform: uppercase;
-  
 }
 
 footer .container .aboutUs {
@@ -95,7 +93,7 @@ footer .container .newsletter form .btn {
 
 footer .container .newsletter form input::placeholder {
   padding-left: 10px;
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
 }
 
 footer .container .newsletter form button:hover {
@@ -128,7 +126,6 @@ footer .container .contact .info li {
   display: grid;
   grid-template-columns: 30px 1fr;
   margin-bottom: 25px;
-
 }
 
 footer .container .contact .info li span {
@@ -171,7 +168,6 @@ footer .container .contact .info li p a:hover {
 }
 
 /* @medias queries  */
-
 
 @media ONLY screen AND (max-width: 1093px) {
   footer {

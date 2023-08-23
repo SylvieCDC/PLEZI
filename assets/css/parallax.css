@@ -6,7 +6,7 @@ html {
 
 /* VIDEO */
 .parallax-section-4 {
-  width:100%; 
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,15 +16,14 @@ html {
 video.fillWidth {
   width: 100%;
   height: 100%;
-
 }
-#video-container { 
-  top:0%; 
-  left:0%; 
-  height:auto; 
-  width:100%; 
-  overflow: hidden; 
-  background-size:cover;
+#video-container {
+  top: 0%;
+  left: 0%;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
 }
 
 /* FIN VIDEO */
@@ -46,13 +45,14 @@ video.fillWidth {
 .banner_menu {
   width: auto;
   height: 50vh;
-  background: url(../images/poke-bowl-aux-oeufs-crevettes-emporter.jpg) no-repeat;
+  background: url(../images/poke-bowl-aux-oeufs-crevettes-emporter.jpg)
+    no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
   color: #006474;
   /* text-shadow: 2px 2px 2px #FFFAF1; */
-  font-family: 'Cocogoose', sans-serif;
+  font-family: "Cocogoose", sans-serif;
   font-weight: bold;
 }
 
@@ -67,7 +67,7 @@ video.fillWidth {
   /* width: 100vw; */
   height: auto;
   color: #006474;
-  font-family: 'Cocogoose', sans-serif;
+  font-family: "Cocogoose", sans-serif;
   font-weight: bold;
   font-size: 2rem;
   text-align: center;
@@ -82,11 +82,10 @@ video.fillWidth {
   /* text-shadow: 1px 1px 0px #000; */
 }
 
-
 /* texte notre promesse  */
 
-.parallax-content {  
-  font-family: 'Cocogoose', sans-serif;
+.parallax-content {
+  font-family: "Cocogoose", sans-serif;
   color: #006474;
   margin: 0 2rem 3rem 2rem;
   font-size: 2.5rem;
@@ -94,14 +93,12 @@ video.fillWidth {
 }
 
 .parallax-section.promesse {
-
-
-  font-family: 'Cocogoose', sans-serif;
+  font-family: "Cocogoose", sans-serif;
   font-weight: bold;
   font-size: 2rem;
   text-align: center;
-  padding: 100px ;
-  background: url(../logo/LOGO_PLEZI_jaune_transp.png) no-repeat center ;
+  padding: 100px;
+  background: url(../logo/LOGO_PLEZI_jaune_transp.png) no-repeat center;
   background-size: contain;
 }
 
@@ -112,7 +109,8 @@ video.fillWidth {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: url(../images/belle-plage-tropicale-exterieure-mer-ile-paradisiaque.jpg) no-repeat;
+  background: url(../images/belle-plage-tropicale-exterieure-mer-ile-paradisiaque.jpg)
+    no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -137,7 +135,6 @@ video.fillWidth {
   margin-bottom: 3rem;
 }
 
-
 .bounce {
   font-size: 5rem;
   text-transform: uppercase;
@@ -157,10 +154,10 @@ video.fillWidth {
   0%,
   50%,
   100% {
-      transform: translateY(0);
+    transform: translateY(0);
   }
   25% {
-      transform: translateY(-20px);
+    transform: translateY(-20px);
   }
 }
 .ten span:nth-of-type(1) {
@@ -197,19 +194,19 @@ video.fillWidth {
   animation-delay: 1.1s;
 }
 .ten span:nth-of-type(12) {
-  animation-delay:1.2s;
+  animation-delay: 1.2s;
 }
 .ten span:nth-of-type(13) {
   animation-delay: 1.3s;
 }
 .ten span:nth-of-type(14) {
-  animation-delay:1.4s;
+  animation-delay: 1.4s;
 }
 .ten span:nth-of-type(15) {
   animation-delay: 1.5s;
 }
 .ten span:nth-of-type(16) {
-  animation-delay:1.6s;
+  animation-delay: 1.6s;
 }
 .ten span:nth-of-type(17) {
   animation-delay: 1.7s;
@@ -234,7 +231,7 @@ video.fillWidth {
 
 .contact_form {
   width: 50%;
-  background: #FFFAF1eb;
+  background: #fffaf1eb;
   padding: 5vh 1vw;
   margin: 100px auto;
   border-radius: 5px;
@@ -247,7 +244,7 @@ video.fillWidth {
   color: #006474;
   /* text-shadow: #fff 1px 1px 0px; */
   font-size: 1.8rem;
-  font-family: 'Cocogoose', sans-serif;
+  font-family: "Cocogoose", sans-serif;
   font-weight: bold;
 }
 
@@ -275,7 +272,7 @@ video.fillWidth {
 
 .section-3 input[type="submit"] {
   background-color: #006474;
-  color: #FFFAF1;
+  color: #fffaf1;
   padding: 1vh 2vw;
   border: none;
   cursor: pointer;
@@ -299,26 +296,24 @@ video.fillWidth {
 }
 
 .word {
-
   margin: auto;
   font-size: 5rem;
   padding: 40px;
   color: #006474;
-  font-family: 'Cocoggose';
+  font-family: "Cocoggose";
   text-transform: uppercase;
   border-radius: 50%;
   background: #fcb045;
   /* text-shadow: 5px 2px #222324, 2px 4px #222324, 3px 5px #222324; */
 }
 
-.forgot{
+.forgot {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: nowrap;
   text-align: center;
-
 }
 
 .forgot p {
@@ -326,10 +321,9 @@ video.fillWidth {
   margin: 20px auto 0;
 }
 
-
 .forgot a {
   text-decoration: none;
-  color:#006474;
+  color: #006474;
 }
 
 .forgot a:hover {
@@ -339,11 +333,10 @@ video.fillWidth {
 /* FIN FORMULAIRES */
 
 /* ///// MEDIA ///// */
-@media only screen and (min-width:1201px) {
+@media only screen and (min-width: 1201px) {
   .parallax-section-2 {
     height: 80vh;
   }
-
 }
 
 @media only screen and (max-width: 1200px) {
@@ -360,7 +353,6 @@ video.fillWidth {
     width: 50%;
   }
 }
-
 
 @media only screen and (max-width: 858px) {
   .section-3 form {
@@ -434,14 +426,11 @@ video.fillWidth {
 }
 
 @media only screen and (max-width: 414px) {
-  .parallax-content {  
+  .parallax-content {
     /* text-align: justify; */
     margin: 0 auto;
   }
   .contact_form h2 {
     font-size: 1.5rem;
   }
-  
 }
-
-
