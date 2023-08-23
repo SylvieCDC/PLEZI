@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } elseif ($password !== $passwordVerif) {
         $message = "Les mots de passe ne correspondent pas.";
     } elseif (!preg_match($pattern, $password)) {
-        $message = "Le mot de passe doit comporter au moins 8 caractères, dont une majuscule, une minuscule, un chiffre et un caractère spécial.";   
+        $message = "Le mot de passe doit comporter au moins 8 caractères, dont une majuscule, une minuscule, un chiffre et un caractère spécial.";
     } else {
         $stmt = $db->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->execute([':email' => $email]);
