@@ -1,4 +1,3 @@
-
 <!-- head -->
 
 <?php
@@ -32,10 +31,10 @@ include_once 'src/head.php';
   <?php
 
   // include_once ('src/produits.php');
-  include_once ('src/menu_cards.php');
+  include_once('src/menu_cards.php');
 
   ?>
- 
+
   <!-- FOOTER -->
 
   <?php
@@ -56,7 +55,7 @@ include_once 'src/head.php';
 
 
   <!-- FIN SCRIPTS JS -->
-  
+
 
 </body>
 

@@ -3,6 +3,9 @@
 
 <head>
   <meta charset="UTF-8" />
+  <!-- Icon sur onglet = favicon -->
+  <link rel="icon" href="/assets/logo/LOGO_PLEZI_jaune.png" type="image/x-icon" />
+  <link rel="apple_icon" href="/assets/logo/LOGO_PLEZI_jaune.png" />
 
   <!-- Icon sur onglet = favicon -->
   <link rel="icon" href="/assets/logo/LOGO_PLEZI_jaune.png" type="image/x-icon" />

@@ -61,7 +61,6 @@ html {
 }
 
 .item-menu:hover h4 {
-
   background: url(../images/madras.jpeg) repeat;
   background-size: cover;
   background-position: center;
@@ -123,7 +122,6 @@ html {
   color: #fffaf1;
 }
 
-
 @media (max-width: 1200px) {
   .menu-galerie {
     flex-direction: column;
@@ -135,4 +133,3 @@ html {
     width: 100%;
   }
 }
-

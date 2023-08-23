@@ -14,32 +14,38 @@ if (isset($_GET['session_id'])) {
     if ($checkout_session && $checkout_session->payment_status == 'paid') {
         // Le paiement a été réussi, videz le panier
         unset($_SESSION['panier']);
-?>
+        ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Thanks for your order!</title>
-  <link rel="stylesheet" href="../../assets/css/messages.css">
-  <!-- Redirect to index.php after a delay of 3 seconds -->
-  <meta http-equiv="refresh" content="3;url=../../../../index.php">
-</head>
-<body>
-<section class='mess_inscription'> 
-    <p>Merci pour votre commande ! <br> <a href='/index.php'>Accueil</a></p>
-</section>
+        <!DOCTYPE html>
+        <html>
 
-<?php 
+        <head>
+            <title>Thanks for your order!</title>
+            <link rel="stylesheet" href="../../assets/css/messages.css">
+            <!-- Icon sur onglet = favicon -->
+            <link rel="icon" href="/assets/logo/LOGO_PLEZI_jaune.png" type="image/x-icon" />
+            <link rel="apple_icon" href="/assets/logo/LOGO_PLEZI_jaune.png" />
+            <!-- Redirect to index.php after a delay of 3 seconds -->
+            <meta http-equiv="refresh" content="3;url=../../../../index.php">
+        </head>
+
+        <body>
+            <section class='mess_inscription'>
+                <p>Merci pour votre commande ! <br> <a href='/index.php'>Accueil</a></p>
+            </section>
+
+        <?php
     } else {
         // Gérez les autres statuts de paiement ici (par exemple, `unpaid`, `canceled`, etc.)
-?>
-<section class='mess_inscription'> 
-    <p>Il y a une erreur avec la transaction</p>
-</section> 
-</body>
-</html>
+        ?>
+            <section class='mess_inscription'>
+                <p>Il y a une erreur avec la transaction</p>
+            </section>
+        </body>
 
-<?php
+        </html>
+
+        <?php
     }
 }
 ?>

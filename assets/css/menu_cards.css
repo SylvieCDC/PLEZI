@@ -33,7 +33,6 @@
   background-color: #006474;
 }
 
-
 .bloc-cards {
   position: relative;
   display: flex;
@@ -56,7 +55,6 @@
   padding: 10px;
   margin: 50px 0;
   font-size: 2.5rem;
-  
 }
 
 .image-block {
@@ -75,7 +73,7 @@ figure {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
   overflow: hidden;
-  margin: 40px 0px ;
+  margin: 40px 0px;
 }
 figure:hover {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -134,14 +132,13 @@ figure figcaption span {
   width: 80%;
 }
 
-
 @media screen and (max-width: 678px) {
   .content {
     margin: 0;
     padding-bottom: 200px;
   }
   .vertical-menu {
-    padding-top: 150px ;
+    padding-top: 150px;
     flex-direction: row;
     white-space: wrap;
     margin: 50px 3px;

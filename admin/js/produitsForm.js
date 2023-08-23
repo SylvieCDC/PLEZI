@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Votre code JavaScript ici
-
   // Global variables
   const imgInputHelper = document.getElementById("image_produit");
   const imgContainer = document.querySelector(".custom__image-container");

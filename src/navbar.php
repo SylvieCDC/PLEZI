@@ -169,21 +169,47 @@ if (!empty($ids)) {
       <?php
       // Vérifier si l'utilisateur est connecté
       if ($role === 1) {
-        ?> <a class="dropdown-content-mobile"><?php  echo "<a>Bonjour $prenom&nbsp;!</a>";?></a><?php
-       ?><ul class="dropdown-content-mobile"><?php
-       ?><li><a href="/admin/form/add_produit_form.php">Ajouter un produit</a></li><?php
-       ?><li><a href="/admin/crud/gestion_produits.php">Gestion des produits</a></li><?php
-       ?><li><a href="/admin/crud/gestion_users.php">Gestion des utilisateurs</a></li><?php
-       ?><li><a href="/ttt/deconnexion.php">Déconnexion</a></li>';
-       ?></ul><?php
+        ?> <a class="dropdown-content-mobile">
+          <?php echo "<a>Bonjour $prenom&nbsp;!</a>"; ?>
+        </a>
+        <?php
+        ?>
+        <ul class="dropdown-content-mobile">
+          <?php
+          ?>
+          <li><a href="/admin/form/add_produit_form.php">Ajouter un produit</a></li>
+          <?php
+          ?>
+          <li><a href="/admin/crud/gestion_produits.php">Gestion des produits</a></li>
+          <?php
+          ?>
+          <li><a href="/admin/crud/gestion_users.php">Gestion des utilisateurs</a></li>
+          <?php
+          ?>
+          <li><a href="/ttt/deconnexion.php">Déconnexion</a></li>';
+          ?>
+        </ul>
+        <?php
       } elseif ($role === 2) {
-      ?><a><?php  echo "<a>Bonjour $prenom&nbsp;!</a>";?></a><?php
-       ?><ul class="dropdown-content-mobile"><?php
-       ?><li><a href="/admin/form/account.php">Gestion du Compte</a></li><?php
-       ?><li><a href="/ttt/deconnexion.php">Déconnexion</a></li><?php
-       ?></ul><?php
+        ?><a>
+          <?php echo "<a>Bonjour $prenom&nbsp;!</a>"; ?>
+        </a>
+        <?php
+        ?>
+        <ul class="dropdown-content-mobile">
+          <?php
+          ?>
+          <li><a href="/admin/form/account.php">Gestion du Compte</a></li>
+          <?php
+          ?>
+          <li><a href="/ttt/deconnexion.php">Déconnexion</a></li>
+          <?php
+          ?>
+        </ul>
+        <?php
       } else {
-       ?><a href="/form/login.php"><i class="fa-solid fa-user"></i></a><?php
+        ?><a href="/form/login.php"><i class="fa-solid fa-user"></i></a>
+        <?php
       }
       ?>
       <a href="/Accueil"><span class="original">Accueil </span><span class="traduction">Bèl

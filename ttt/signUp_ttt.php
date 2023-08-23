@@ -52,6 +52,7 @@ $message = "<div class='mess_inscription'>$message<br><a href='../form/signUp.ph
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,7 +74,9 @@ $message = "<div class='mess_inscription'>$message<br><a href='../form/signUp.ph
         }
     </style>
 </head>
+
 <body>
     <?php echo $message; ?>
 </body>
+
 </html>

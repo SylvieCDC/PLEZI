@@ -2,6 +2,11 @@
 session_start();
 include_once "../../config/connx.php";
 
+// Vérifier si la connexion à la base de données a été établie
+if (!$db) {
+    die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
+}
+
 $response = ["success" => false, "total" => 0];
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
