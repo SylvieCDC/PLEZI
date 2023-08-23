@@ -7,9 +7,12 @@
   <link rel="icon" href="/assets/logo/LOGO_PLEZI_jaune.png" type="image/x-icon" />
   <link rel="apple_icon" href="/assets/logo/LOGO_PLEZI_jaune.png" />
 
+  <!-- Icon sur onglet = favicon -->
+  <link rel="icon" href="/assets/logo/LOGO_PLEZI_jaune.png" type="image/x-icon" />
+  <link rel="apple_icon" href="/assets/logo/LOGO_PLEZI_jaune.png" />
   <link rel="stylesheet" href="../css/produitsForm.css" />
   <link rel="stylesheet" href="/assets/css/navbar.css">
-  <title>update user</title>
+  <title>Modifier Utilisateur</title>
 </head>
 
 <body>

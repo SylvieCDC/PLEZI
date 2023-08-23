@@ -9,7 +9,7 @@
 
   <link rel="stylesheet" href="../css/produitsForm.css" />
   <link rel="stylesheet" href="/assets/css/navbar.css">
-  <title>Image input</title>
+  <title>Modifier Produit</title>
 </head>
 
 <body>
