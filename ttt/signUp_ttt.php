@@ -4,24 +4,26 @@ require_once('../config/connx.php');
 $message = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nom = trim(htmlspecialchars($_POST["nom"]));
-    $prenom = trim(htmlspecialchars($_POST["prenom"]));
+    $nom = trim(strip_tags(htmlspecialchars($_POST["nom"])));
+    $prenom = trim(strip_tags(htmlspecialchars($_POST["prenom"])));
     $email = trim(filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL));
-    $phone = trim(htmlspecialchars($_POST["phone"]));
-    $password = trim($_POST["pass"]);
-    $passwordVerif = trim($_POST["passConfirm"]);
+    $phone = trim(strip_tags(htmlspecialchars($_POST["phone"])));
+    $password = trim(strip_tags($_POST["pass"]));
+    $passwordVerif = trim(strip_tags($_POST["passConfirm"]));
 
     $pattern = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+    $forbidden_pattern = '/\.(exe|js|php|bat|cmd|sh|py)$/i';
 
-    // Validation des champs
-    if (!preg_match("/^[\p{L}\s]+$/u", $nom) || !preg_match("/^[\p{L}\s]+$/u", $prenom)) {
+    if (empty($nom) || empty($prenom) || empty($phone) || empty($password) || empty($passwordVerif)) {
+        $message = "Merci de remplir tous les champs.";
+    } elseif (!preg_match("/^[\p{L}\s]+$/u", $nom) || !preg_match("/^[\p{L}\s]+$/u", $prenom)) {
         $message = "Le nom et le prénom doivent seulement contenir des lettres et des accents.";
     } elseif (!$email) {
         $message = "L'adresse mail n'est pas valide.";
-    } elseif (empty($nom) || empty($prenom) || empty($phone) || empty($password) || empty($passwordVerif)) {
-        $message = "Merci de remplir tous les champs.";
     } elseif ($password !== $passwordVerif) {
         $message = "Les mots de passe ne correspondent pas.";
+    } elseif (preg_match($forbidden_pattern, $password)) {
+        $message = "Votre mot de passe contient des caractères ou des motifs non autorisés.";
     } elseif (!preg_match($pattern, $password)) {
         $message = "Le mot de passe doit comporter au moins 8 caractères, dont une majuscule, une minuscule, un chiffre et un caractère spécial.";
     } else {
@@ -60,7 +62,7 @@ $message = "<div class='mess_inscription'>$message<br><a href='../form/signUp.ph
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compte</title>
+    <title>Créer un Compte</title>
     <link rel="stylesheet" href="../assets/css/messages.css">
     <style>
         @font-face {
