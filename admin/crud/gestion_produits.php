@@ -160,9 +160,11 @@ $db = null;
                                 </td>
                                 <td>
                                     <?php
-                                    $imagePath = $produit['image_produit'] ?? ''; // Provide default value if null
-                                    $startIndex = strpos($imagePath, "../upload_images/") ?? -1; // Provide default value if not found
-                                    $endIndex = strpos($imagePath, ".", $startIndex) ?? -1; // Provide default value if not found
+                                    $imagePath = $produit['image_produit'] ?? ''; // Si $produit['image_produit'] est null (ou non définie), alors assigne la chaîne vide ('') à $imagePath
+                                    $startIndex = (strpos($imagePath, "../upload_images/") !== false) ? strpos($imagePath, "../upload_images/") : -1;
+
+                                    $endIndex = (strpos($imagePath, ".", $startIndex) !== false) ? strpos($imagePath, ".", $startIndex) : -1;
+
                                     $imageName = ($startIndex !== -1 && $endIndex !== -1)
                                         ? mb_substr($imagePath, $startIndex + strlen("../upload_images/"), $endIndex - $startIndex - strlen("../upload_images/"))
                                         : '';
