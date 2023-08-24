@@ -19,7 +19,7 @@ if (isset($_GET)) {
     $id = $_GET['id'];
 
 
-    // on prends les donnees de post pour les stockers.
+    // je prends les donnees de post pour les stocker.
     $update_titre_produit = htmlspecialchars($_POST['titre_produit']);
     $update_Id_categorie = htmlspecialchars($_POST['nom_categorie']);
     $update_enonce_produit = htmlspecialchars($_POST['enonce_produit']);
@@ -39,7 +39,7 @@ if (isset($_GET)) {
     $image_produit = $produit['image_produit'];
 
 
-
+    // je crée un tableau vide qui va se remplir avec les données modifiées et celles non modifiées
     $updateData = array();
 
     if (!empty($update_titre_produit)) {
