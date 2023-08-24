@@ -102,7 +102,7 @@ if (!empty($ids)) {
             </ul>
           </li>
         </ul>
-        <a href="/presentation.php"><span class="original">Notre Histoire </span><span class="traduction">Origin
+        <a href="/Presentation"><span class="original">Notre Histoire </span><span class="traduction">Origin
             nou</span></a>
         <a href="/index.php#contact"><span class="original">Contact </span><span class="traduction">Kontak</span></a>
         <a href="/admin/Panier/panier.php" class="link">Panier </a>

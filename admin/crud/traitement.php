@@ -6,7 +6,8 @@ if (!$db) {
     die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
 }
 
-function sendErrorResponse($message = 'Une erreur s\'est produite.') {
+function sendErrorResponse($message = 'Une erreur s\'est produite.')
+{
     echo $message;
     exit;
 }
@@ -31,10 +32,17 @@ function sendErrorResponse($message = 'Une erreur s\'est produite.') {
 
     $tabExt = array('jpg', 'gif', 'png', 'jpeg');
     $tabMimes = array('image/jpeg', 'image/jpg', 'image/gif', 'image/png');
-    
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($_FILES['image_produit']['name'])) {
             sendErrorResponse('Veuillez sélectionner une image à télécharger.');
+        }
+
+        // Vérification pour éviter les noms de fichiers avec deux extensions
+        $filename = $_FILES['image_produit']['name'];
+        $extensionCount = substr_count($filename, '.');
+        if ($extensionCount > 1) {
+            sendErrorResponse('Le nom du fichier est invalide.');
         }
 
         $extension = pathinfo($_FILES['image_produit']['name'], PATHINFO_EXTENSION);
@@ -68,7 +76,9 @@ function sendErrorResponse($message = 'Une erreur s\'est produite.') {
         }
 
         $cheminImage = '../upload_images/' . $nomImage;
-        
+
+
+
         $reqCategorie = 'SELECT Id_categorie FROM categories WHERE Id_categorie = :idCategorie';
         $connCategorie = $db->prepare($reqCategorie);
         $connCategorie->bindParam(':idCategorie', $nomCatSelected);

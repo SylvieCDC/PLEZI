@@ -58,7 +58,7 @@ session_start();
     <div class="modal-container" id="modal-container">
         <!-- Display the message and remove it from the session -->
         <div class="modal-message">
-            <h1>NO PERMISSIONS</h1>
+            <h1>Echec du paiement</h1>
         </div>
     </div>
 
@@ -77,7 +77,7 @@ session_start();
             setTimeout(function () {
                 modalOverlay.style.display = 'none';
                 modalContainer.style.display = 'none';
-                window.location.href = "../Accueil";
+                window.location.href = "../admin/panier/produits.php";
             }, 3000); // 3000 milliseconds = 3 seconds
         }
 
