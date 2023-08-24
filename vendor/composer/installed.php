@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => '23082023.x-dev',
+        'version' => '23082023.9999999.9999999.9999999-dev',
+        'reference' => 'ea7a7e4a0ff2e086572dff8987bbd7c242260efb',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,11 +11,20 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => '23082023.x-dev',
+            'version' => '23082023.9999999.9999999.9999999-dev',
+            'reference' => 'ea7a7e4a0ff2e086572dff8987bbd7c242260efb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'miljar/php-exif' => array(
+            'pretty_version' => 'v0.6.5',
+            'version' => '0.6.5.0',
+            'reference' => '41f23db39d7b48e4af0e134c2e80e577c1782ac9',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../miljar/php-exif',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

@@ -1,5 +1,6 @@
 {
     "require": {
-        "stripe/stripe-php": "^10.18"
+        "stripe/stripe-php": "^10.18",
+        "miljar/php-exif": "^0.6.5"
     }
 }
