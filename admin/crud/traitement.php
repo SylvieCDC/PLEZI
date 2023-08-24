@@ -83,8 +83,22 @@ function sendErrorResponse($message = 'Une erreur s\'est produite.')
 
             $data = $exif->getData();
             foreach ($data as $value) {
-                if (is_string($value) && strpos($value, '<?php') !== false) {
-                    sendErrorResponse('Les métadonnées de l\'image sont suspectes.');
+                if (is_string($value)) {
+                    // Rechercher le contenu PHP malveillant
+                    if (strpos($value, '<?php') !== false) {
+                        sendErrorResponse('Les métadonnées de l\'image sont suspectes (contenu PHP détecté).');
+                    }
+
+                    // Rechercher les scripts JavaScript malveillants
+                    if (strpos(strtolower($value), '<script') !== false) {
+                        sendErrorResponse('Les métadonnées de l\'image sont suspectes (script JS détecté).');
+                    }
+
+                    // Rechercher le contenu Python malveillant
+                    if (strpos($value, 'import os') !== false || strpos($value, 'import sys') !== false) {
+                        sendErrorResponse('Les métadonnées de l\'image sont suspectes (code Python détecté).');
+                    }
+
                 }
             }
         } catch (Exception $e) {
