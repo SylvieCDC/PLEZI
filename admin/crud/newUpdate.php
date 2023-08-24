@@ -110,7 +110,7 @@ if (isset($_GET)) {
     } else {
         $updateData['image_produit'] = $image_produit;
     }
-    ;
+
 
     $sql = "UPDATE produits SET titre_produit = :titre, Id_categorie = :categorie, enonce_produit = :enonce, image_produit = :image_produit, prix_produit = :prix WHERE id = :id";
     $stmt = $db->prepare($sql);
