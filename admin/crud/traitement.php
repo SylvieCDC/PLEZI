@@ -1,6 +1,7 @@
 <?php
 session_start();
 require('../../config/connx.php');
+require('../../vendor/autoload.php');
 
 if (!$db) {
     die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
@@ -32,6 +33,7 @@ function sendErrorResponse($message = 'Une erreur s\'est produite.')
 
     $tabExt = array('jpg', 'gif', 'png', 'jpeg');
     $tabMimes = array('image/jpeg', 'image/jpg', 'image/gif', 'image/png');
+    use PHPExif\Reader\Reader;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($_FILES['image_produit']['name'])) {
@@ -60,6 +62,44 @@ function sendErrorResponse($message = 'Une erreur s\'est produite.')
         if (!$infosImg || $infosImg[0] > WIDTH_MAX || $infosImg[1] > HEIGHT_MAX || filesize($_FILES['image_produit']['tmp_name']) > MAX_SIZE) {
             sendErrorResponse('L\'image dépasse les dimensions ou la taille maximale autorisée.');
         }
+
+        // Utilisation de php-exif pour vérifier les métadonnées
+
+        $reader = PHPExif\Reader\Reader::factory(PHPExif\Reader\Reader::TYPE_NATIVE);
+
+        $exif = $reader->read($_FILES['image_produit']['tmp_name']);
+
+        if (!$exif) {
+            sendErrorResponse("Les métadonnées de l'image ne peuvent pas être lues ou sont absentes.");
+        }
+        
+        $data = $exif->getData();
+        foreach ($data as $value) {
+            if (is_string($value) && strpos($value, '<?php') !== false) {
+                sendErrorResponse('Les métadonnées de l\'image sont suspectes.');
+            }
+        }
+        
+
+        try {
+            $reader = Reader::factory(Reader::TYPE_NATIVE);
+            $exif = $reader->read($_FILES['image_produit']['tmp_name']);
+
+            if (!$exif) {
+                throw new Exception('Les métadonnées de l\'image ne peuvent pas être lues ou sont absentes.');
+            }
+
+            // Vérifier la présence de chaînes suspectes dans les métadonnées
+            $data = $exif->getData();
+            foreach ($data as $value) {
+                if (is_string($value) && strpos($value, '<?php') !== false) {
+                    sendErrorResponse('Les métadonnées de l\'image sont suspectes.');
+                }
+            }
+        } catch (Exception $e) {
+            sendErrorResponse('Une erreur est survenue lors de la vérification des métadonnées de l\'image: ' . $e->getMessage());
+        }
+
 
         $nomImage = md5(uniqid()) . '.' . $extension;
         if (!move_uploaded_file($_FILES['image_produit']['tmp_name'], TARGET . '/' . $nomImage)) {
