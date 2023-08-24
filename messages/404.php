@@ -58,7 +58,7 @@ session_start();
     <div class="modal-container" id="modal-container">
         <!-- Display the message and remove it from the session -->
         <div class="modal-message">
-            <h1>NO PERMISSIONS</h1>
+            <h1>Page non trouvée</h1>
         </div>
     </div>
 

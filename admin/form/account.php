@@ -302,7 +302,6 @@ if (isset($_SESSION['Id_user'])) {
 <body>
 
     <?php
-    require_once('../../ttt/middleware.php');
     // Inclure le fichier de connexion à la base de données
     require_once("../../config/connx.php");
     include_once('../../src/navbar.php');

@@ -46,14 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 ':token' => $token
             ]);
 
-            $message = "Félicitations, votre compte est créé. Vous pouvez vous connecter.";
+            $message = "Félicitations, votre compte est créé.";
         }
     }
 } else {
     $message = "Veuillez accéder à cette page via le formulaire d'inscription.";
 }
 
-$message = "<div class='mess_inscription'>$message<br><a href='../form/signUp.php' class='inscription_lien'>Retour au formulaire</a></div>";
+$message = "<div class='mess_inscription'>$message<br><a href='../form/login.php' class='inscription_lien'>Vous pouvez vous connecter</a></div>";
 
 ?>
 <!DOCTYPE html>

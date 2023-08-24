@@ -1,3 +1,5 @@
+Options -Indexes
+
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -5,8 +7,11 @@ RewriteRule ^(.*)$ index.php [L]
 
 
 # RewriteRule ^plezi/index.php$ /accueil [L,R=301]
-RewriteRule ^Accueil$   /index.php [L]
-RewriteRule ^Menus$   /admin/Panier/produits.php [L]
+RewriteRule ^Accueil$   /index.php [L] 
+RewriteRule ^Presentation$   /presentation.php [L] 
 
+# Si une ressource n'est pas trouvée, redirige vers index.php
+ErrorDocument 403 /messages/error-page.php
 
-
+# redirection des erreurs 404 (Page non trouvée)
+ErrorDocument 404 /messages/404.php

@@ -108,6 +108,7 @@ try {
     // Handle any errors that occur during Stripe session creation
     echo "Error: " . $e->getMessage();
     // Optionally, you can redirect the user to an error page here
+    header("Location: ../../messages/error-page.php");
     exit();
 }
 

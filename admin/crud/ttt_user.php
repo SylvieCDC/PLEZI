@@ -38,6 +38,9 @@ if (!$db) {
 
     <?php
 
+    $pattern = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/';
+
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Récupérer les valeurs du formulaire
         $nom = htmlspecialchars($_POST["nom"]);
@@ -62,19 +65,32 @@ if (!$db) {
 
         $idRole = $rowRole['Id_role'];
 
-        if (isset($nom, $prenom, $email, $password, $phone, $passwordVerif, $rowRole) && !empty($nom) && !empty($prenom) && !empty($email) && !empty($phone) && !empty($password) && !empty($passwordVerif) && !empty($idRole)) {
-            // ici on verifie que c'est une vrai adresse mail
-            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                // On vérifie que l'email n'existe pas dans la bdd
-                $sql = "SELECT * FROM users WHERE email = :email";
-                $stmt = $db->prepare($sql);
-                $stmt->execute(['email' => $email]);
-                $rowCount = $stmt->rowCount(); // nombre de lignes affectées
-                if ($rowCount == 0) {
-                    // ici on verifie que les 2 mots de passe sont identiques
-                    if ($password == $passwordVerif) {
+        if (!isset($nom, $prenom, $email, $password, $phone, $passwordVerif, $rowRole) || empty($nom) || empty($prenom) || empty($email) || empty($phone) || empty($password) || empty($passwordVerif) || empty($idRole)) {
+            echo "<div class='mess_inscription'>Merci de remplir tous les champs<br><br>
+            <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "<div class='mess_inscription'>L'adresse mail n'est pas valide<br><br>
+            <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
+        } else {
+            $sql = "SELECT * FROM users WHERE email = :email";
+            $stmt = $db->prepare($sql);
+            $stmt->execute(['email' => $email]);
+            $rowCount = $stmt->rowCount();
+    
+            if ($rowCount > 0) {
+                echo "<div class='mess_inscription'>L'adresse mail existe déjà<br> <br>
+                <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
+            } elseif ($password !== $passwordVerif) {
+                echo "<div class='mess_inscription'>Les mots de passe ne correspondent pas<br><br>
+                <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
+            } elseif (!preg_match($pattern, $password)) {
+                echo "<div class='mess_inscription'>Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre, un caractère spécial et avoir une longueur minimale de 8 caractères.<br><br>
+                <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
+            } else {
+                
                         // Hashage du mot de passe
                         $hashed_motdepasse = password_hash($password, PASSWORD_DEFAULT);
+                        
 
                         // Générer un token hexadécimal de 32 octets (256 bits)
                         $token = bin2hex(random_bytes(32));
@@ -92,29 +108,19 @@ if (!$db) {
                         $inscription->bindParam(':token', $token);
                         $inscription->bindParam(':id_role', $idRole);
 
+                        
+
                         if ($inscription->execute()) {
-
-
                             echo "<div class='mess_inscription'>Utilisateur crée.<br><br>
-                        <a href='gestion_users.php' class='inscription_lien'>Retour</a></div>";
+                            <a href='gestion_users.php' class='inscription_lien'>Retour</a></div>";
                         } else {
-                            echo "<div class='mess_inscription'>Les mots de passe ne correspondent pas<br><br>
-                        <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
+                            echo "<div class='mess_inscription'>Erreur lors de l'inscription.<br><br>
+                            <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
                         }
-                    } else {
-                        echo "<div class='mess_inscription'>L'adresse mail existe déjà<br> <br>
-                    <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
                     }
-                } else {
-                    echo "<div class='mess_inscription'>L'adresse mail n'est pas valide<br><br>
-                <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
                 }
-            } else {
-                echo "<div class='mess_inscription'>Merci de remplir tous les champs<br><br>
-            <a href=../form/add_user.php' class='inscription_lien'>Retour</a></div>";
             }
-        }
-    }
+            
 
     ?>
 </body>

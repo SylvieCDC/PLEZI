@@ -222,16 +222,10 @@ if (!empty($ids)) {
             xhr.send();
         }
 
-        function updateQuantity(event, productId) {
-            event.preventDefault(); // Prevent the default form submission
-
-            const quantityInput = event.target.elements.quantity;
-            const newQuantity = quantityInput.value;
-
-            // Make an AJAX request to update the quantity
+        function updateQuantity(productId, newQuantity) {
             fetch(`update_quantity.php?id=${productId}`, {
                 method: 'POST',
-                body: new URLSearchParams({ quantity: newQuantity }), // Send the new quantity as POST data
+                body: new URLSearchParams({ quantity: newQuantity }),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -240,53 +234,17 @@ if (!empty($ids)) {
                     if (!response.ok) {
                         throw new Error('Failed to update quantity.');
                     }
-                    return response.json(); // Assuming your PHP script returns JSON data
+                    return response.json();
                 })
                 .then(data => {
                     // Update the total price and quantities on the page
                     const totalElement = document.querySelector('.total div');
-                    const quantityElements = document.querySelectorAll('.quantity');
-
-                    // Update the total price
                     totalElement.textContent = `Total : ${data.total} €`;
-
-                    // Update the quantities for each product
-                    Object.entries(data.quantities).forEach(([productId, quantity]) => {
-                        const quantityElement = Array.from(quantityElements).find(el => el.dataset.productId === productId.toString());
-                        if (quantityElement) {
-                            quantityElement.textContent = quantity;
-                        }
-                    });
-
-
-                    const cartCountElement = document.querySelector('#cart-count');
-                    let cartCount = 0;
-                    for (let quantity of Object.values(data.quantities)) {
-                        cartCount += quantity;
-                    }
-                    cartCountElement.textContent = cartCount;
-                    function updateCartCounter() {
-                        const cartCountElement = document.querySelector('#cart-count');
-                        let cartCount = 0;
-
-                        // Si vous pouvez envoyer les quantités actuelles du panier dans la réponse :
-                        // for (let quantity of Object.values(data.quantities)) {
-                        //   cartCount += quantity;
-                        // }
-
-                        // Sinon, augmentez simplement le compteur de 1 (ou de la quantité ajoutée)
-                        cartCount = parseInt(cartCountElement.textContent) + 1;
-
-                        cartCountElement.textContent = cartCount;
-                    }
-
-
                 })
                 .catch(error => {
                     console.error(error);
                 });
         }
-
 
     </script>
 
