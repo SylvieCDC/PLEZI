@@ -46,7 +46,7 @@ function sendErrorResponse($message = 'Une erreur s\'est produite.')
             sendErrorResponse('Veuillez sélectionner une image à télécharger.');
         }
 
-        // Vérification de la validité du nom de fichier
+        // Vérification de la validité du nom de fichier et éviter deux extensions par ex on compte le nombre de "." si c'est plus que 1 c'est invalide et peut être un script malveillant déguisé 
         $filename = $_FILES['image_produit']['name'];
         $extensionCount = substr_count($filename, '.');
         if ($extensionCount > 1) {
