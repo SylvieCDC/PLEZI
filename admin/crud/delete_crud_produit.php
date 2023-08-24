@@ -16,7 +16,7 @@ if (isset($_GET['delete_id'])) {
     if ($product && $product['image_produit']) {
         $imageName = $product['image_produit'];
 
-        // 2. Supprimer l'image du serveur
+        // 2. Supprimer l'image dans le dossier upload_images
         $imagePath = "../upload_images/" . $imageName;
         if (file_exists($imagePath)) {
             unlink($imagePath);
