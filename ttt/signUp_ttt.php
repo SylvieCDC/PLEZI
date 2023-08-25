@@ -1,12 +1,22 @@
 <?php
-require_once('../config/connx.php');
+require_once __DIR__ . '/../config/connx.php';
+
+
+// Vérifier si la connexion à la base de données a été établie
+if (!$db) {
+    die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
+}
+
+
 
 $message = '';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
+    {
     $nom = trim(strip_tags(htmlspecialchars($_POST["nom"])));
     $prenom = trim(strip_tags(htmlspecialchars($_POST["prenom"])));
-    $email = trim(filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL));
+    // $email = trim(filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL));
+    $email = $_POST["email"];
     $phone = trim(strip_tags(htmlspecialchars($_POST["phone"])));
     $password = trim(strip_tags($_POST["pass"]));
     $passwordVerif = trim(strip_tags($_POST["passConfirm"]));
