@@ -62,7 +62,7 @@ if (!empty($ids)) {
         <!-- logo -->
         <div class="logo_content">
           <a href="/index.php" class="logo">
-            <img src="/assets/logo/LOGO_PLEZI_jaune.png" alt="logo PLEZI" />
+            <img src="/assets/logo/LOGO_PLEZI_jaune.png" alt="logo PLEZI" width="auto" height="4rem" />
           </a>
 
         </div>
