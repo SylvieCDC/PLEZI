@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-/* texte animé slogan*/
+/* texte animé dans notre concept - Présentation*/
 console.clear();
 
 var textPath = document.querySelector("#text-path");
