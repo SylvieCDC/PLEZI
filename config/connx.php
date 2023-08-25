@@ -21,16 +21,10 @@ try {
 
     // on instancie PDO avec les options
     $db = new PDO($dsn, DB_USER, DB_PASS, $options);
+
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
-
-// Vérification de la connexion à la base de données
-// if ($db) {
-//     echo "Connexion à la base de données réussie !";
-// } else {
-//     echo "Erreur de connexion à la base de données.";
-// }
 
 
 ?>
