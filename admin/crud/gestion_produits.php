@@ -161,9 +161,9 @@ $db = null;
                                 <td>
                                     <?php
                                     $imagePath = $produit['image_produit'] ?? ''; // Si $produit['image_produit'] est null (ou non définie), alors assigne la chaîne vide ('') à $imagePath
-                                    $startIndex = (strpos($imagePath, "../upload_images/") !== false) ? strpos($imagePath, "../upload_images/") : -1;
+                                    $startIndex = strpos($imagePath, "../upload_images/");
+                                    $endIndex = ($startIndex !== false) ? strpos($imagePath, ".", $startIndex) : -1;
 
-                                    $endIndex = (strpos($imagePath, ".", $startIndex) !== false) ? strpos($imagePath, ".", $startIndex) : -1;
 
                                     $imageName = ($startIndex !== -1 && $endIndex !== -1)
                                         ? mb_substr($imagePath, $startIndex + strlen("../upload_images/"), $endIndex - $startIndex - strlen("../upload_images/"))
@@ -187,7 +187,7 @@ $db = null;
                                                 d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
                                         </svg></a>
                                     <span class="icon-space"></span>
-                                    
+
                                     <button type="button" class="bt" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop_<?= $produit['id'] ?>"> <svg
                                             xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">

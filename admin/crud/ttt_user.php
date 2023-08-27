@@ -76,7 +76,7 @@ if (!$db) {
             $stmt = $db->prepare($sql);
             $stmt->execute(['email' => $email]);
             $rowCount = $stmt->rowCount();
-    
+
             if ($rowCount > 0) {
                 echo "<div class='mess_inscription'>L'adresse mail existe déjà<br> <br>
                 <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
@@ -87,40 +87,40 @@ if (!$db) {
                 echo "<div class='mess_inscription'>Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre, un caractère spécial et avoir une longueur minimale de 8 caractères.<br><br>
                 <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
             } else {
-                
-                        // Hashage du mot de passe
-                        $hashed_motdepasse = password_hash($password, PASSWORD_DEFAULT);
-                        
 
-                        // Générer un token hexadécimal de 32 octets (256 bits)
-                        $token = bin2hex(random_bytes(32));
+                // Hashage du mot de passe
+                $hashed_motdepasse = password_hash($password, PASSWORD_DEFAULT);
 
-                        // Insertion des données dans la base de données, y 
+
+                // Générer un token hexadécimal de 32 octets (256 bits)
+                $token = bin2hex(random_bytes(32));
+
+                // Insertion des données dans la base de données, y 
     
-                        $reqInsert = 'INSERT INTO users (nom, prenom, telephone, email, pass, token, inscription_date, Id_role) 
+                $reqInsert = 'INSERT INTO users (nom, prenom, telephone, email, pass, token, inscription_date, Id_role) 
                         VALUES(:nom, :prenom, :phone, :email, :pass, :token, NOW(), :id_role)';
-                        $inscription = $db->prepare($reqInsert);
-                        $inscription->bindParam(':nom', $nom);
-                        $inscription->bindParam(':prenom', $prenom);
-                        $inscription->bindParam(':phone', $phone);
-                        $inscription->bindParam(':email', $email);
-                        $inscription->bindParam(':pass', $hashed_motdepasse);
-                        $inscription->bindParam(':token', $token);
-                        $inscription->bindParam(':id_role', $idRole);
+                $inscription = $db->prepare($reqInsert);
+                $inscription->bindParam(':nom', $nom);
+                $inscription->bindParam(':prenom', $prenom);
+                $inscription->bindParam(':phone', $phone);
+                $inscription->bindParam(':email', $email);
+                $inscription->bindParam(':pass', $hashed_motdepasse);
+                $inscription->bindParam(':token', $token);
+                $inscription->bindParam(':id_role', $idRole);
 
-                        
 
-                        if ($inscription->execute()) {
-                            echo "<div class='mess_inscription'>Utilisateur crée.<br><br>
+
+                if ($inscription->execute()) {
+                    echo "<div class='mess_inscription'>Utilisateur crée.<br><br>
                             <a href='gestion_users.php' class='inscription_lien'>Retour</a></div>";
-                        } else {
-                            echo "<div class='mess_inscription'>Erreur lors de l'inscription.<br><br>
+                } else {
+                    echo "<div class='mess_inscription'>Erreur lors de l'inscription.<br><br>
                             <a href='../form/add_user.php' class='inscription_lien'>Retour</a></div>";
-                        }
-                    }
                 }
             }
-            
+        }
+    }
+
 
     ?>
 </body>

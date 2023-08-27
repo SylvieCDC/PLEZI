@@ -49,7 +49,7 @@ function sendErrorResponse($message = 'Une erreur s\'est produite.')
         if ($_FILES['image_produit']['error'] !== UPLOAD_ERR_OK) {
             sendErrorResponse('Une erreur est survenue lors du téléchargement du fichier.');
         }
-        
+
 
         // Vérification de la validité du nom de fichier et éviter deux extensions par ex on compte le nombre de "." si c'est plus que 1 c'est invalide et peut être un script malveillant déguisé 
         $filename = $_FILES['image_produit']['name'];

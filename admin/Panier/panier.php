@@ -237,7 +237,7 @@ if (!empty($ids)) {
                     return response.json();
                 })
                 .then(data => {
-                    // Update the total price and quantities on the page
+                    // Mets à jour le total et les quantités sur la page
                     const totalElement = document.querySelector('.total div');
                     totalElement.textContent = `Total : ${data.total} €`;
                 })

@@ -80,11 +80,18 @@ if (isset($_GET)) {
 
         if ($error === UPLOAD_ERR_OK) {
 
+             // Vérification de la validité du nom de fichier et éviter deux extensions par ex 
+             //on compte le nombre de "." si c'est plus que 1 c'est invalide et peut être 
+             //un script malveillant déguisé 
             $extension = pathinfo($_FILES['image_produit']['name'], PATHINFO_EXTENSION);
+            $extensionCount = substr_count($filename, '.');
+            if ($extensionCount > 1) {
+                sendErrorResponse('Le nom du fichier est invalide.');
+            }
             // Test getimagesize on the uploaded file
             $imageSizeInfo = getimagesize($_FILES['image_produit']['tmp_name']);
             if ($imageSizeInfo === false) {
-                die("Error getting image size.");
+                die("L\'image dépasse les dimensions ou la taille maximale autorisée.");
             }
 
             if (in_array(strtolower($extension), $tabExt)) {
