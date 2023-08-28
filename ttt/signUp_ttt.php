@@ -16,11 +16,11 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST")
     $nom = trim(strip_tags(htmlspecialchars($_POST["nom"])));
     $prenom = trim(strip_tags(htmlspecialchars($_POST["prenom"])));
     $email = trim(filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL));
-    // $email = $_POST["email"];
     $phone = trim(strip_tags(htmlspecialchars($_POST["phone"])));
     $password = trim(strip_tags($_POST["pass"]));
     $passwordVerif = trim(strip_tags($_POST["passConfirm"]));
 
+    //regex pattern de validation des champs nom et prénom avec des pattern interdits (extensions de fichiers )
     $pattern = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/';
     $forbidden_pattern = '/\.(exe|js|php|bat|cmd|sh|py)$/i';
 
