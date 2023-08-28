@@ -6,6 +6,6 @@
 
 <script src="/assets/js/video.js"></script>
 <script src="/assets/js/nav.js"></script>
-<script src="/assets/js/main.js"></script>
+<!-- <script src="/assets/js/main.js"></script> -->
 <script src="/assets/js/racines.js"></script>
 <script src="/assets/js/produits.js"></script>
