@@ -92,6 +92,8 @@
 <script>
 
   // text animé "promesses"
+// Ce script anime un texte en affichant successivement des mots de la liste "words" dans un élément HTML ayant la classe "word".
+// Chaque mot est affiché progressivement, puis effacé, créant un effet d'animation de texte.
 
   var words = [`Lanmou'`, 'Soléy', 'Plézi'],
     part,
