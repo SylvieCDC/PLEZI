@@ -149,35 +149,48 @@ $db = null;
                         <?php
                         // Boucle sur la variable $produits pour afficher les valeurs de chaque produit
                         foreach ($produits as $produit) {
-
                             ?>
                             <tr>
                                 <td>
+                                    <!-- Affiche l'ID du produit -->
                                     <?= $produit['id'] ?>
                                 </td>
+
                                 <td>
+                                    <!-- Affiche le titre du produit -->
                                     <?= $produit['titre_produit'] ?>
                                 </td>
+
                                 <td>
                                     <?php
-                                    $imagePath = $produit['image_produit'] ?? ''; // Si $produit['image_produit'] est null (ou non définie), alors assigne la chaîne vide ('') à $imagePath
+                                    // Récupère le chemin de l'image du produit (ou chaîne vide si non défini)
+                                    $imagePath = $produit['image_produit'] ?? '';
+                                    // Trouve l'indice de début du chemin relatif de l'image 
                                     $startIndex = strpos($imagePath, "../upload_images/");
+                                    //Si cela recherche le point dans le nom du fichier d'image après le répertoire "../upload_images/
                                     $endIndex = ($startIndex !== false) ? strpos($imagePath, ".", $startIndex) : -1;
 
-
                                     $imageName = ($startIndex !== -1 && $endIndex !== -1)
-                                        ? mb_substr($imagePath, $startIndex + strlen("../upload_images/"), $endIndex - $startIndex - strlen("../upload_images/"))
+                                        ? mb_substr(
+                                            $imagePath, $startIndex + strlen("../upload_images/"),
+                                            $endIndex - $startIndex - strlen("../upload_images/")
+                                        )
                                         : '';
-                                    echo $imageName;
+                                        // Affiche le nom de l'image sans le chemin ni l'extension
+                                    echo $imageName; 
                                     ?>
                                 </td>
 
                                 <td>
+                                    <!-- Affiche une portion du texte de l'énoncé du produit, limité à 10 caractères, suivi de "..." si plus long -->
                                     <?= mb_strlen($produit['enonce_produit']) > 10 ? mb_substr($produit['enonce_produit'], 0, 10) . '...' : $produit['enonce_produit'] ?>
+                                    
                                 </td>
                                 <td>
-                                    <?= $produit['prix_produit'] ?>
+                                    <!-- Affiche le prix du produit -->
+                                    <?= $produit['prix_produit'] ?> 
                                 </td>
+
                                 <td>
                                     <a href="../form/update_produit.php?id=<?= $produit['id'] ?>"><svg
                                             xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
