@@ -15,8 +15,8 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST")
     {
     $nom = trim(strip_tags(htmlspecialchars($_POST["nom"])));
     $prenom = trim(strip_tags(htmlspecialchars($_POST["prenom"])));
-    // $email = trim(filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL));
-    $email = $_POST["email"];
+    $email = trim(filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL));
+    // $email = $_POST["email"];
     $phone = trim(strip_tags(htmlspecialchars($_POST["phone"])));
     $password = trim(strip_tags($_POST["pass"]));
     $passwordVerif = trim(strip_tags($_POST["passConfirm"]));
@@ -44,16 +44,14 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST")
             $message = "L'adresse mail existe déjà.";
         } else {
             $hashed_motdepasse = password_hash($password, PASSWORD_DEFAULT);
-            $token = bin2hex(random_bytes(32));
 
-            $inscription = $db->prepare('INSERT INTO users (nom, prenom, telephone, email, pass, token, inscription_date, Id_role) VALUES(:nom, :prenom, :phone, :email, :pass, :token, NOW(), 2)');
+            $inscription = $db->prepare('INSERT INTO users (nom, prenom, telephone, email, pass, inscription_date, Id_role) VALUES(:nom, :prenom, :phone, :email, :pass, NOW(), 2)');
             $inscription->execute([
                 ':nom' => $nom,
                 ':prenom' => $prenom,
                 ':phone' => $phone,
                 ':email' => $email,
                 ':pass' => $hashed_motdepasse,
-                ':token' => $token
             ]);
 
             $message = "Félicitations, votre compte est créé.";
