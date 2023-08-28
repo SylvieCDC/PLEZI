@@ -131,33 +131,50 @@ function sendErrorResponse($message = 'Une erreur s\'est produite.')
 
 
 
+        // Préparation de la requête pour récupérer l'Id de la catégorie sélectionnée
         $reqCategorie = 'SELECT Id_categorie FROM categories WHERE Id_categorie = :idCategorie';
-        $connCategorie = $db->prepare($reqCategorie);
-        $connCategorie->bindParam(':idCategorie', $nomCatSelected);
-        $connCategorie->execute();
-        $rowCategorie = $connCategorie->fetch(PDO::FETCH_ASSOC);
 
+        // Prépare la requête SQL pour éviter les injections SQL
+        $connCategorie = $db->prepare($reqCategorie); 
+        // Lie le paramètre nommé à la valeur de $nomCatSelected
+        $connCategorie->bindParam(':idCategorie', $nomCatSelected); 
+        // Exécute la requête préparée
+        $connCategorie->execute(); 
+        // Récupère la première ligne de résultat sous forme de tableau associatif
+        $rowCategorie = $connCategorie->fetch(PDO::FETCH_ASSOC); 
+    
+        // Vérifie si la catégorie existe, sinon affiche une erreur
         if (!$rowCategorie) {
             sendErrorResponse("La catégorie spécifiée n'a pas été trouvée.");
         }
 
+        // Récupère l'Id de la catégorie
         $idCategorie = $rowCategorie['Id_categorie'];
 
+        // Préparation de la requête pour insérer un nouveau produit
         $reqInsert = 'INSERT INTO produits (titre_produit, Id_categorie, enonce_produit, prix_produit, image_produit) VALUES (:nomProduit, :idCategorie, :description, :prix, :cheminImage)';
+
+         // Prépare la requête SQL d'insertion
         $connInsert = $db->prepare($reqInsert);
-        $connInsert->bindParam(':nomProduit', $nomProduit);
+        // Lie les paramètres nommés aux valeurs correspondantes
+        $connInsert->bindParam(':nomProduit', $nomProduit); 
         $connInsert->bindParam(':idCategorie', $idCategorie);
         $connInsert->bindParam(':description', $description);
         $connInsert->bindParam(':prix', $prix);
         $connInsert->bindParam(':cheminImage', $cheminImage);
 
-        if ($connInsert->execute()) {
+        // Exécute la requête d'insertion et affiche un message en cas de succès ou d'échec
+        // Vérifie si l'insertion s'est bien déroulée
+        if ($connInsert->execute()) { 
+            // Affiche un message de succès avec des liens: Ajouter un nouveau produit ou Retour à la page gestion des produits
             echo "<div class='mess_inscription'>Le produit a été ajouté avec succès.<br> <br>
-            <a href='../form/add_produit_form.php' class='inscription_lien'>Ajouter un nouveau Produit</a><br><br>
-            <a href='gestion_produits.php' class='inscription_lien'>Retour</a>
-            </div>";
+    <a href='../form/add_produit_form.php' class='inscription_lien'>Ajouter un nouveau Produit</a><br><br>
+    <a href='gestion_produits.php' class='inscription_lien'>Retour</a>
+    </div>"; 
         } else {
-            sendErrorResponse('Une erreur est survenue lors de l\'ajout du produit.');
+            // Affiche un message d'erreur
+            sendErrorResponse('Une erreur est survenue lors de l\'ajout du produit.'); 
         }
+
     }
     ?>
