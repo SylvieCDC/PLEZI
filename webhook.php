@@ -32,8 +32,8 @@ if ($event->type === 'checkout.session.completed') {
     // Montant total de la commande
     $totalAmount = $event->data->object->amount_total;
 
-    // Récupérer les données de l'utilisateur (remplacez ceci par votre méthode d'authentification utilisateur)
-    $userId = 1; // Remplacez par l'ID réel de l'utilisateur
+    // Récupérer les données de l'utilisateur (notre méthode d'authentification utilisateur)
+    $userId = 1; //  l'ID réel de l'utilisateur
 
     // Insérer les données dans la table 'commandes'
     $dateCommande = date('Y-m-d H:i:s');

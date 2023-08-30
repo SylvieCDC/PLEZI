@@ -42,6 +42,25 @@ function sendErrorResponse($message = 'Une erreur s\'est produite.')
     use PHPExif\Reader\Reader;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        // Vérification des champs obligatoires
+    
+        if (empty($_POST['titre_produit'])) {
+            sendErrorResponse('Veuillez fournir un titre pour le produit.');
+        }
+
+        if (empty($_POST['nom_categorie']) || !is_numeric($_POST['nom_categorie'])) {
+            sendErrorResponse('Veuillez sélectionner une catégorie valide.');
+        }
+
+        if (empty($_POST['enonce_produit'])) {
+            sendErrorResponse('Veuillez fournir une description pour le produit.');
+        }
+
+        if (empty($_POST['prix_produit']) || !is_numeric($_POST['prix_produit'])) {
+            sendErrorResponse('Veuillez fournir un prix valide pour le produit.');
+        }
+        
         if (empty($_FILES['image_produit']['name'])) {
             sendErrorResponse('Veuillez sélectionner une image à télécharger.');
         }
@@ -135,14 +154,14 @@ function sendErrorResponse($message = 'Une erreur s\'est produite.')
         $reqCategorie = 'SELECT Id_categorie FROM categories WHERE Id_categorie = :idCategorie';
 
         // Prépare la requête SQL pour éviter les injections SQL
-        $connCategorie = $db->prepare($reqCategorie); 
+        $connCategorie = $db->prepare($reqCategorie);
         // Lie le paramètre nommé à la valeur de $nomCatSelected
-        $connCategorie->bindParam(':idCategorie', $nomCatSelected); 
+        $connCategorie->bindParam(':idCategorie', $nomCatSelected);
         // Exécute la requête préparée
-        $connCategorie->execute(); 
+        $connCategorie->execute();
         // Récupère la première ligne de résultat sous forme de tableau associatif
-        $rowCategorie = $connCategorie->fetch(PDO::FETCH_ASSOC); 
-    
+        $rowCategorie = $connCategorie->fetch(PDO::FETCH_ASSOC);
+
         // Vérifie si la catégorie existe, sinon affiche une erreur
         if (!$rowCategorie) {
             sendErrorResponse("La catégorie spécifiée n'a pas été trouvée.");
@@ -154,10 +173,10 @@ function sendErrorResponse($message = 'Une erreur s\'est produite.')
         // Préparation de la requête pour insérer un nouveau produit
         $reqInsert = 'INSERT INTO produits (titre_produit, Id_categorie, enonce_produit, prix_produit, image_produit) VALUES (:nomProduit, :idCategorie, :description, :prix, :cheminImage)';
 
-         // Prépare la requête SQL d'insertion
+        // Prépare la requête SQL d'insertion
         $connInsert = $db->prepare($reqInsert);
         // Lie les paramètres nommés aux valeurs correspondantes
-        $connInsert->bindParam(':nomProduit', $nomProduit); 
+        $connInsert->bindParam(':nomProduit', $nomProduit);
         $connInsert->bindParam(':idCategorie', $idCategorie);
         $connInsert->bindParam(':description', $description);
         $connInsert->bindParam(':prix', $prix);
@@ -165,15 +184,15 @@ function sendErrorResponse($message = 'Une erreur s\'est produite.')
 
         // Exécute la requête d'insertion et affiche un message en cas de succès ou d'échec
         // Vérifie si l'insertion s'est bien déroulée
-        if ($connInsert->execute()) { 
+        if ($connInsert->execute()) {
             // Affiche un message de succès avec des liens: Ajouter un nouveau produit ou Retour à la page gestion des produits
             echo "<div class='mess_inscription'>Le produit a été ajouté avec succès.<br> <br>
     <a href='../form/add_produit_form.php' class='inscription_lien'>Ajouter un nouveau Produit</a><br><br>
     <a href='gestion_produits.php' class='inscription_lien'>Retour</a>
-    </div>"; 
+    </div>";
         } else {
             // Affiche un message d'erreur
-            sendErrorResponse('Une erreur est survenue lors de l\'ajout du produit.'); 
+            sendErrorResponse('Une erreur est survenue lors de l\'ajout du produit.');
         }
 
     }

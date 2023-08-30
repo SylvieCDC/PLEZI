@@ -25,6 +25,11 @@ if (isset($_GET)) {
     $update_Id_categorie = htmlspecialchars($_POST['nom_categorie']);
     $update_enonce_produit = htmlspecialchars($_POST['enonce_produit']);
     $update_prix_produit = htmlspecialchars($_POST['prix_produit']);
+    if (!is_numeric($update_prix_produit)) {
+        $_SESSION['erreur'] = "Le prix doit contenir uniquement des chiffres.";
+        header('Location: gestion_produits.php'); 
+        exit;
+    }
 
     // Je recherche le produit dans ma bdd
     $sql = "SELECT * FROM produits WHERE id = :id";

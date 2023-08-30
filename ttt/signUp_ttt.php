@@ -44,10 +44,11 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         // Prépare une requête pour vérifier si l'adresse email existe déjà dans la base de données
         $stmt = $db->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->execute([':email' => $email]);
-        
+
         // Si une ou plusieurs lignes sont renvoyées, cela signifie que l'adresse email existe déjà
         if ($stmt->rowCount() > 0) {
-            $message = "L'adresse mail existe déjà.";
+            $message = "L'adresse mail existe déjà.<br><a href='../form/login.php' 
+            class='inscription_lien'>Vous pouvez vous connecter</a>";
         } else {
             // Si l'adresse email n'existe pas dans la base de données, le processus de validation est réussi
             // Hash le mot de passe pour le stocker de manière sécurisée dans la base de données
@@ -63,7 +64,9 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
 
             $inscription->execute();
 
-            $message = "Félicitations, votre compte est créé.";
+            $message = "Félicitations, votre compte est créé.<br>
+            <a href='../form/login.php'class='inscription_lien'>Vous pouvez vous connecter</a></div>";
+
 
         }
     }
@@ -71,8 +74,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
     $message = "Veuillez accéder à cette page via le formulaire d'inscription.";
 }
 
-$message = "<div class='mess_inscription'>$message<br><a href='../form/login.php' 
-class='inscription_lien'>Vous pouvez vous connecter</a></div>";
+$message = "<div class='mess_inscription'>$message</div>";
 
 ?>
 <!DOCTYPE html>
